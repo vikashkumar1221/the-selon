@@ -144,14 +144,14 @@ export default function SalonOwnerDashboard() {
     <div className="min-h-screen bg-[#0B0B0D] py-10 pb-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         {/* TOP BAR: SALON BRAND & QUICK ACTIONS */}
-        <div className="bg-[#171719] rounded-2xl border border-charcoal-border p-6 shadow-luxury flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div className="bg-[#141418] rounded-3xl border border-white/[0.08] p-6 shadow-2xl flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div className="flex items-center space-x-4">
-            <div className="relative w-14 h-14 rounded-xl overflow-hidden border border-gold-border/40 shrink-0">
+            <div className="relative w-14 h-14 rounded-xl overflow-hidden border border-white/[0.08] shrink-0">
               <Image src={salon.bannerImage} alt={salon.name} fill className="object-cover" />
             </div>
             <div>
               <div className="flex items-center space-x-2">
-                <span className="text-[11px] uppercase tracking-wider text-gold font-bold">
+                <span className="text-[10px] uppercase tracking-wider text-gold font-bold">
                   Owner Dashboard
                 </span>
                 <span className="text-[#71717A]">•</span>
@@ -165,14 +165,14 @@ export default function SalonOwnerDashboard() {
           <div className="flex items-center space-x-3">
             <button
               onClick={() => setWalkinModalOpen(true)}
-              className="px-4 py-2.5 rounded-xl bg-gold text-black text-xs font-bold uppercase tracking-wider hover:bg-gold-light transition-all flex items-center space-x-1.5 shadow-gold"
+              className="gold-btn px-4 py-2.5 rounded-xl text-xs uppercase tracking-wider flex items-center space-x-1.5 shadow-gold"
             >
               <UserPlus className="w-4 h-4" />
               <span>Add Walk-In Client</span>
             </button>
             <Link
               href={`/salons/${salon.id}`}
-              className="px-4 py-2.5 rounded-xl bg-[#0B0B0D] text-white border border-charcoal-border hover:border-gold text-xs font-semibold transition-colors"
+              className="px-4 py-2.5 rounded-xl bg-[#0B0B0D] text-white border border-white/[0.08] hover:border-gold text-xs font-semibold transition-colors"
             >
               View Public Page
             </Link>
@@ -181,40 +181,40 @@ export default function SalonOwnerDashboard() {
 
         {/* METRICS ROW */}
         <div className="grid grid-cols-2 lg:grid-cols-6 gap-3 sm:gap-4">
-          <div className="bg-[#171719] p-4 rounded-xl border border-charcoal-border">
-            <p className="text-[10px] uppercase tracking-wider text-[#A1A1AA] font-semibold">Total Today</p>
+          <div className="bg-[#141418] p-4 rounded-xl border border-white/[0.08]">
+            <p className="text-[10px] uppercase tracking-wider text-[#71717A] font-semibold">Total Today</p>
             <p className="text-2xl font-extrabold text-white mt-1">{salonBookings.length}</p>
             <p className="text-[10px] text-[#71717A] mt-1">Appointments & Walk-ins</p>
           </div>
 
-          <div className="bg-[#171719] p-4 rounded-xl border border-gold/40 shadow-gold">
+          <div className="bg-[#141418] p-4 rounded-xl border border-gold/40 shadow-gold">
             <p className="text-[10px] uppercase tracking-wider text-gold font-semibold">Active Queue</p>
             <p className="text-2xl font-extrabold text-gold mt-1">{activeQueue.length}</p>
-            <p className="text-[10px] text-[#A1A1AA] mt-1">Waiting & In-Chair</p>
+            <p className="text-[10px] text-[#71717A] mt-1">Waiting & In-Chair</p>
           </div>
 
-          <div className="bg-[#171719] p-4 rounded-xl border border-charcoal-border">
-            <p className="text-[10px] uppercase tracking-wider text-[#A1A1AA] font-semibold">Serving Token</p>
+          <div className="bg-[#141418] p-4 rounded-xl border border-white/[0.08]">
+            <p className="text-[10px] uppercase tracking-wider text-[#71717A] font-semibold">Serving Token</p>
             <p className="text-2xl font-extrabold text-green-400 mt-1">#{salon.currentServingToken}</p>
             <p className="text-[10px] text-[#71717A] mt-1">Current Chair</p>
           </div>
 
-          <div className="bg-[#171719] p-4 rounded-xl border border-charcoal-border">
-            <p className="text-[10px] uppercase tracking-wider text-[#A1A1AA] font-semibold">Completed</p>
+          <div className="bg-[#141418] p-4 rounded-xl border border-white/[0.08]">
+            <p className="text-[10px] uppercase tracking-wider text-[#71717A] font-semibold">Completed</p>
             <p className="text-2xl font-extrabold text-white mt-1">{completedToday.length}</p>
             <p className="text-[10px] text-green-400 mt-1">100% Satisfied</p>
           </div>
 
-          <div className="bg-[#171719] p-4 rounded-xl border border-charcoal-border">
-            <p className="text-[10px] uppercase tracking-wider text-[#A1A1AA] font-semibold">Cancelled / Skip</p>
+          <div className="bg-[#141418] p-4 rounded-xl border border-white/[0.08]">
+            <p className="text-[10px] uppercase tracking-wider text-[#71717A] font-semibold">Cancelled / Skip</p>
             <p className="text-2xl font-extrabold text-[#71717A] mt-1">{cancelledToday.length}</p>
-            <p className="text-[10px] text-[#71717A] mt-1">With logged reasons</p>
+            <p className="text-[10px] text-[#71717A] mt-1">Logged reasons</p>
           </div>
 
-          <div className="bg-[#171719] p-4 rounded-xl border border-charcoal-border">
+          <div className="bg-[#141418] p-4 rounded-xl border border-white/[0.08]">
             <p className="text-[10px] uppercase tracking-wider text-gold font-semibold">Today Revenue</p>
             <p className="text-2xl font-extrabold text-white mt-1">₹{todayRevenue}</p>
-            <p className="text-[10px] text-gold mt-1">Platform Settlement</p>
+            <p className="text-[10px] text-gold mt-1">Gross Inflow</p>
           </div>
         </div>
 

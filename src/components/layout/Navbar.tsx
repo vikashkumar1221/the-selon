@@ -31,22 +31,22 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-[#0B0B0D]/90 backdrop-blur-md border-b border-gold-border/20 transition-all">
+    <header className="sticky top-0 z-50 w-full bg-[#0B0B0D]/85 backdrop-blur-xl border-b border-white/[0.08] transition-all">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-3 group">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#D4AF37] to-[#BFA15F] p-[1px] shadow-gold transition-transform group-hover:scale-105">
+          <Link href="/" className="flex items-center space-x-3.5 group">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#D4AF37] via-[#F3E5AB] to-[#BFA15F] p-[1px] shadow-gold transition-transform group-hover:scale-105">
               <div className="w-full h-full bg-[#0B0B0D] rounded-xl flex items-center justify-center">
                 <Scissors className="w-5 h-5 text-gold group-hover:rotate-12 transition-transform duration-300" />
               </div>
             </div>
             <div className="flex flex-col">
-              <span className="text-2xl font-bold tracking-wider text-white">
+              <span className="text-xl font-bold tracking-wider text-white">
                 SALON<span className="text-gold">X</span>
               </span>
-              <span className="text-[9px] uppercase tracking-[0.25em] text-[#A1A1AA] -mt-1 font-medium">
-                Luxury Salon & Queue
+              <span className="text-[9px] uppercase tracking-[0.25em] text-[#71717A] -mt-1 font-semibold">
+                Luxury Ateliers & Queue
               </span>
             </div>
           </Link>
@@ -59,53 +59,59 @@ export default function Navbar() {
                 <Link
                   key={link.name}
                   href={link.href}
-                  className={`text-sm font-medium tracking-wide transition-colors ${
+                  className={`text-sm tracking-wide transition-all relative py-1 ${
                     isActive
                       ? "text-gold font-semibold"
                       : "text-[#A1A1AA] hover:text-white"
                   }`}
                 >
                   {link.name}
+                  {isActive && (
+                    <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-gold to-transparent rounded-full" />
+                  )}
                 </Link>
               );
             })}
           </nav>
 
           {/* Right Action Controls: Role Switcher & Book CTA */}
-          <div className="hidden lg:flex items-center space-x-4">
-            {/* Role Switcher */}
+          <div className="hidden lg:flex items-center space-x-3.5">
+            {/* Role Switcher Pill */}
             <div className="relative">
               <button
                 onClick={() => setRoleDropdownOpen(!roleDropdownOpen)}
-                className="flex items-center space-x-2 px-3 py-1.5 rounded-lg bg-[#171719] border border-gold-border/30 text-xs text-[#A1A1AA] hover:text-white hover:border-gold transition-colors"
-                title="Switch role"
+                className="flex items-center space-x-2 px-3 py-1.5 rounded-lg bg-[#141418] border border-white/[0.08] text-xs text-[#A1A1AA] hover:text-white hover:border-gold/50 transition-all"
+                title="Switch persona"
               >
-                <span className="font-medium capitalize text-white">
+                <span className="text-[10px] uppercase font-bold text-gold tracking-wider">
+                  Role:
+                </span>
+                <span className="font-semibold capitalize text-white">
                   {currentUser.role.replace("_", " ")}
                 </span>
                 <ChevronDown className="w-3.5 h-3.5 text-gold" />
               </button>
 
               {roleDropdownOpen && (
-                <div className="absolute right-0 mt-2 w-56 rounded-xl bg-[#171719] border border-gold-border/40 shadow-luxury py-2 z-50">
-                  <div className="px-3 py-1.5 border-b border-charcoal-border/50 text-[11px] text-[#A1A1AA] uppercase font-semibold tracking-wider">
-                    Test Role Persona
+                <div className="absolute right-0 mt-2 w-56 rounded-xl bg-[#141418] border border-white/[0.12] shadow-2xl py-2 z-50 backdrop-blur-xl">
+                  <div className="px-3.5 py-1.5 border-b border-white/[0.06] text-[10px] text-[#71717A] uppercase font-semibold tracking-wider">
+                    Switch Test View
                   </div>
                   <button
                     onClick={() => {
                       switchUser("usr_customer_1");
                       setRoleDropdownOpen(false);
                     }}
-                    className={`w-full px-3 py-2 text-left text-xs flex items-center space-x-2.5 transition-colors ${
+                    className={`w-full px-3.5 py-2.5 text-left text-xs flex items-center space-x-2.5 transition-colors ${
                       currentUser.role === "customer"
                         ? "bg-gold/10 text-gold font-semibold"
-                        : "text-[#A1A1AA] hover:bg-[#212124] hover:text-white"
+                        : "text-[#A1A1AA] hover:bg-[#1E1E24] hover:text-white"
                     }`}
                   >
                     <User className="w-4 h-4 text-gold" />
                     <div>
                       <p className="text-white">Customer View</p>
-                      <p className="text-[10px] text-[#A1A1AA]">Alexander (Client)</p>
+                      <p className="text-[10px] text-[#71717A]">Alexander Wright</p>
                     </div>
                   </button>
                   <button
@@ -113,16 +119,16 @@ export default function Navbar() {
                       switchUser("usr_owner_1");
                       setRoleDropdownOpen(false);
                     }}
-                    className={`w-full px-3 py-2 text-left text-xs flex items-center space-x-2.5 transition-colors ${
+                    className={`w-full px-3.5 py-2.5 text-left text-xs flex items-center space-x-2.5 transition-colors ${
                       currentUser.role === "salon_owner"
                         ? "bg-gold/10 text-gold font-semibold"
-                        : "text-[#A1A1AA] hover:bg-[#212124] hover:text-white"
+                        : "text-[#A1A1AA] hover:bg-[#1E1E24] hover:text-white"
                     }`}
                   >
                     <Store className="w-4 h-4 text-gold" />
                     <div>
-                      <p className="text-white">Salon Owner View</p>
-                      <p className="text-[10px] text-[#A1A1AA]">Marcus (Royal Crown)</p>
+                      <p className="text-white">Salon Owner Portal</p>
+                      <p className="text-[10px] text-[#71717A]">Marcus (Royal Crown)</p>
                     </div>
                   </button>
                   <button
@@ -130,23 +136,23 @@ export default function Navbar() {
                       switchUser("usr_admin_1");
                       setRoleDropdownOpen(false);
                     }}
-                    className={`w-full px-3 py-2 text-left text-xs flex items-center space-x-2.5 transition-colors ${
+                    className={`w-full px-3.5 py-2.5 text-left text-xs flex items-center space-x-2.5 transition-colors ${
                       currentUser.role === "admin"
                         ? "bg-gold/10 text-gold font-semibold"
-                        : "text-[#A1A1AA] hover:bg-[#212124] hover:text-white"
+                        : "text-[#A1A1AA] hover:bg-[#1E1E24] hover:text-white"
                     }`}
                   >
                     <Shield className="w-4 h-4 text-gold" />
                     <div>
-                      <p className="text-white">Super Admin View</p>
-                      <p className="text-[10px] text-[#A1A1AA]">Victoria (Platform Ops)</p>
+                      <p className="text-white">Super Admin Console</p>
+                      <p className="text-[10px] text-[#71717A]">Victoria Sterling</p>
                     </div>
                   </button>
                 </div>
               )}
             </div>
 
-            {/* Dashboard Quick Link based on role */}
+            {/* Role Portal Quick Link */}
             {currentUser.role === "customer" && (
               <Link
                 href="/customer"
@@ -158,26 +164,26 @@ export default function Navbar() {
             {currentUser.role === "salon_owner" && (
               <Link
                 href="/owner"
-                className="text-xs text-gold border border-gold/40 px-2.5 py-1.5 rounded-lg hover:bg-gold/10 transition-colors flex items-center space-x-1"
+                className="text-xs text-gold border border-gold/40 px-2.5 py-1.5 rounded-lg hover:bg-gold/10 transition-colors flex items-center space-x-1.5"
               >
                 <Store className="w-3.5 h-3.5" />
-                <span>Owner Dashboard</span>
+                <span>Owner Portal</span>
               </Link>
             )}
             {currentUser.role === "admin" && (
               <Link
                 href="/admin"
-                className="text-xs text-gold border border-gold/40 px-2.5 py-1.5 rounded-lg hover:bg-gold/10 transition-colors flex items-center space-x-1"
+                className="text-xs text-gold border border-gold/40 px-2.5 py-1.5 rounded-lg hover:bg-gold/10 transition-colors flex items-center space-x-1.5"
               >
                 <Shield className="w-3.5 h-3.5" />
-                <span>Admin Console</span>
+                <span>Super Admin</span>
               </Link>
             )}
 
             {/* Book Now Primary Button */}
             <Link
               href="/book"
-              className="relative inline-flex items-center justify-center px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-black bg-gradient-to-r from-[#D4AF37] via-[#F3E5AB] to-[#BFA15F] rounded-lg shadow-gold hover:opacity-95 transition-all transform hover:-translate-y-0.5"
+              className="gold-btn px-5 py-2.5 rounded-lg text-xs uppercase tracking-wider flex items-center shadow-gold"
             >
               <Sparkles className="w-3.5 h-3.5 mr-1.5" />
               Book Appointment
@@ -188,13 +194,13 @@ export default function Navbar() {
           <div className="flex md:hidden items-center space-x-2">
             <Link
               href="/book"
-              className="text-xs font-semibold px-3 py-1.5 bg-gold text-black rounded-lg"
+              className="gold-btn text-xs px-3.5 py-1.5 rounded-lg font-bold uppercase"
             >
               Book
             </Link>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg bg-[#171719] border border-charcoal-border text-white"
+              className="p-2 rounded-lg bg-[#141418] border border-white/[0.08] text-white"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
@@ -204,23 +210,23 @@ export default function Navbar() {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-[#0B0B0D] border-b border-gold-border/30 px-4 pt-3 pb-6 space-y-4">
+        <div className="md:hidden bg-[#0E0E12] border-b border-white/[0.08] px-4 pt-3 pb-6 space-y-4">
           <div className="space-y-1">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="block px-3 py-2 text-sm text-[#A1A1AA] hover:text-gold hover:bg-[#171719] rounded-lg"
+                className="block px-3 py-2 text-sm text-[#A1A1AA] hover:text-gold hover:bg-[#17171C] rounded-lg"
               >
                 {link.name}
               </Link>
             ))}
           </div>
 
-          <div className="pt-2 border-t border-charcoal-border/50">
-            <p className="text-[11px] uppercase tracking-wider text-[#A1A1AA] px-3 mb-2 font-semibold">
-              Quick Role Navigation
+          <div className="pt-2 border-t border-white/[0.08]">
+            <p className="text-[10px] uppercase tracking-wider text-[#71717A] px-3 mb-2 font-semibold">
+              Switch User View
             </p>
             <div className="grid grid-cols-3 gap-2 px-1">
               <button
@@ -228,10 +234,10 @@ export default function Navbar() {
                   switchUser("usr_customer_1");
                   setMobileMenuOpen(false);
                 }}
-                className={`py-2 text-[11px] rounded-lg border text-center ${
+                className={`py-2 text-[11px] rounded-lg border text-center font-medium ${
                   currentUser.role === "customer"
                     ? "border-gold text-gold bg-gold/10"
-                    : "border-charcoal-border text-[#A1A1AA]"
+                    : "border-white/[0.08] text-[#A1A1AA]"
                 }`}
               >
                 Customer
@@ -241,10 +247,10 @@ export default function Navbar() {
                   switchUser("usr_owner_1");
                   setMobileMenuOpen(false);
                 }}
-                className={`py-2 text-[11px] rounded-lg border text-center ${
+                className={`py-2 text-[11px] rounded-lg border text-center font-medium ${
                   currentUser.role === "salon_owner"
                     ? "border-gold text-gold bg-gold/10"
-                    : "border-charcoal-border text-[#A1A1AA]"
+                    : "border-white/[0.08] text-[#A1A1AA]"
                 }`}
               >
                 Owner
@@ -254,10 +260,10 @@ export default function Navbar() {
                   switchUser("usr_admin_1");
                   setMobileMenuOpen(false);
                 }}
-                className={`py-2 text-[11px] rounded-lg border text-center ${
+                className={`py-2 text-[11px] rounded-lg border text-center font-medium ${
                   currentUser.role === "admin"
                     ? "border-gold text-gold bg-gold/10"
-                    : "border-charcoal-border text-[#A1A1AA]"
+                    : "border-white/[0.08] text-[#A1A1AA]"
                 }`}
               >
                 Admin
@@ -276,14 +282,14 @@ export default function Navbar() {
             <Link
               href="/admin"
               onClick={() => setMobileMenuOpen(false)}
-              className="text-xs text-center py-2 text-[#A1A1AA] border border-charcoal-border rounded-lg"
+              className="text-xs text-center py-2 text-[#A1A1AA] border border-white/[0.08] rounded-lg"
             >
               Super Admin Console
             </Link>
             <Link
               href="/become-partner"
               onClick={() => setMobileMenuOpen(false)}
-              className="text-xs text-center py-2 text-white bg-[#171719] rounded-lg"
+              className="text-xs text-center py-2 text-white bg-[#17171C] rounded-lg"
             >
               Become a Partner
             </Link>

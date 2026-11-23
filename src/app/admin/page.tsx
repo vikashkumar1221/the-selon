@@ -68,8 +68,8 @@ export default function SuperAdminDashboard() {
 
         {/* METRICS CARDS */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-          <div className="bg-[#171719] p-5 rounded-2xl border border-charcoal-border">
-            <div className="flex items-center justify-between text-xs text-[#A1A1AA]">
+          <div className="bg-[#141418] p-5 rounded-2xl border border-white/[0.08] shadow-lg">
+            <div className="flex items-center justify-between text-xs text-[#71717A]">
               <span>Active Salons</span>
               <Store className="w-4 h-4 text-gold" />
             </div>
@@ -80,7 +80,7 @@ export default function SuperAdminDashboard() {
             </p>
           </div>
 
-          <div className="bg-[#171719] p-5 rounded-2xl border border-gold/40 shadow-gold">
+          <div className="bg-[#141418] p-5 rounded-2xl border border-gold/40 shadow-gold">
             <div className="flex items-center justify-between text-xs text-gold">
               <span>Platform Revenue</span>
               <DollarSign className="w-4 h-4 text-gold" />
@@ -91,8 +91,8 @@ export default function SuperAdminDashboard() {
             </p>
           </div>
 
-          <div className="bg-[#171719] p-5 rounded-2xl border border-charcoal-border">
-            <div className="flex items-center justify-between text-xs text-[#A1A1AA]">
+          <div className="bg-[#141418] p-5 rounded-2xl border border-white/[0.08] shadow-lg">
+            <div className="flex items-center justify-between text-xs text-[#71717A]">
               <span>Registered Clients</span>
               <Users className="w-4 h-4 text-gold" />
             </div>
@@ -102,15 +102,15 @@ export default function SuperAdminDashboard() {
             <p className="text-[11px] text-green-400 mt-1">+142 this week</p>
           </div>
 
-          <div className="bg-[#171719] p-5 rounded-2xl border border-charcoal-border">
-            <div className="flex items-center justify-between text-xs text-[#A1A1AA]">
+          <div className="bg-[#141418] p-5 rounded-2xl border border-white/[0.08] shadow-lg">
+            <div className="flex items-center justify-between text-xs text-[#71717A]">
               <span>Total Bookings</span>
               <Sparkles className="w-4 h-4 text-gold" />
             </div>
             <p className="text-3xl font-extrabold text-white mt-2">
               {(metrics.totalBookings + bookings.length).toLocaleString()}
             </p>
-            <p className="text-[11px] text-[#A1A1AA] mt-1">99.8% Queue Accuracy</p>
+            <p className="text-[11px] text-[#71717A] mt-1">99.8% Queue Accuracy</p>
           </div>
         </div>
 

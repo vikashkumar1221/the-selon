@@ -66,9 +66,9 @@ export default function CustomerDashboard() {
     <div className="min-h-screen bg-[#0B0B0D] py-10 pb-28">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 space-y-8">
         {/* Profile Card Header */}
-        <div className="bg-[#171719] rounded-2xl border border-charcoal-border p-6 shadow-luxury flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div className="bg-[#141418] rounded-3xl border border-white/[0.08] p-6 sm:p-8 shadow-2xl flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="flex items-center space-x-4">
-            <div className="w-16 h-16 rounded-2xl bg-gold/20 border border-gold/40 flex items-center justify-center text-gold font-bold text-2xl shrink-0">
+            <div className="w-16 h-16 rounded-2xl bg-gold/15 border border-gold/40 flex items-center justify-center text-gold font-bold text-2xl shrink-0">
               {currentUser.name ? currentUser.name[0] : "A"}
             </div>
             <div className="text-center sm:text-left">
@@ -78,21 +78,21 @@ export default function CustomerDashboard() {
                   VIP Patron
                 </span>
               </div>
-              <p className="text-xs text-[#A1A1AA] mt-1">{currentUser.phone} • {currentUser.email}</p>
+              <p className="text-xs text-[#71717A] mt-1">{currentUser.phone} • {currentUser.email}</p>
             </div>
           </div>
 
           <div className="flex items-center space-x-3">
             <Link
               href="/queue"
-              className="px-4 py-2 rounded-xl bg-gold text-black text-xs font-bold uppercase tracking-wider hover:bg-gold-light transition-all flex items-center space-x-1.5 shadow-gold"
+              className="gold-btn px-4 py-2 rounded-xl text-xs uppercase tracking-wider flex items-center space-x-1.5 shadow-gold"
             >
               <Clock className="w-4 h-4" />
               <span>Track Live Queue</span>
             </Link>
             <Link
               href="/book"
-              className="px-4 py-2 rounded-xl bg-[#0B0B0D] text-white border border-charcoal-border hover:border-gold text-xs font-semibold uppercase tracking-wider transition-colors"
+              className="px-4 py-2 rounded-xl bg-[#0B0B0D] text-white border border-white/[0.08] hover:border-gold text-xs font-semibold uppercase tracking-wider transition-colors"
             >
               New Booking
             </Link>
