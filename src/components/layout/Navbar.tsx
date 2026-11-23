@@ -73,14 +73,13 @@ export default function Navbar() {
 
           {/* Right Action Controls: Role Switcher & Book CTA */}
           <div className="hidden lg:flex items-center space-x-4">
-            {/* Role Demo Switcher */}
+            {/* Role Switcher */}
             <div className="relative">
               <button
                 onClick={() => setRoleDropdownOpen(!roleDropdownOpen)}
                 className="flex items-center space-x-2 px-3 py-1.5 rounded-lg bg-[#171719] border border-gold-border/30 text-xs text-[#A1A1AA] hover:text-white hover:border-gold transition-colors"
-                title="Switch role for testing"
+                title="Switch role"
               >
-                <div className="w-2 h-2 rounded-full bg-gold animate-pulse"></div>
                 <span className="font-medium capitalize text-white">
                   {currentUser.role.replace("_", " ")}
                 </span>

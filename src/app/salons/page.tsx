@@ -207,7 +207,7 @@ function SalonsContent() {
               <div className="space-y-2">
                 <div className="flex justify-between text-xs">
                   <span className="font-semibold text-[#A1A1AA]">Minimum Rating</span>
-                  <span className="text-gold font-bold">{minRating > 0 ? `${minRating}★+` : "Any"}</span>
+                  <span className="text-gold font-bold">{minRating > 0 ? `${minRating}+ Stars` : "Any"}</span>
                 </div>
                 <div className="flex gap-2">
                   {[0, 4.5, 4.8, 4.9].map((rate) => (
@@ -220,7 +220,7 @@ function SalonsContent() {
                           : "bg-[#0B0B0D] text-[#A1A1AA] border-charcoal-border"
                       }`}
                     >
-                      {rate === 0 ? "All" : `${rate}★`}
+                      {rate === 0 ? "All" : `${rate}+`}
                     </button>
                   ))}
                 </div>
@@ -279,9 +279,8 @@ function SalonsContent() {
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-                    <div className="absolute top-2 left-2 px-2 py-0.5 rounded-md bg-[#0B0B0D]/90 border border-green-500/40 text-[10px] text-green-400 font-semibold flex items-center space-x-1">
-                      <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
-                      <span>Now #{salon.currentServingToken}</span>
+                    <div className="absolute top-2 left-2 px-2 py-0.5 rounded-md bg-[#0B0B0D]/90 border border-charcoal-border text-[10px] text-green-400 font-semibold">
+                      Now #{salon.currentServingToken}
                     </div>
                   </div>
 

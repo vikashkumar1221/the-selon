@@ -13,6 +13,7 @@ import {
   Scissors,
   ShieldCheck,
   ChevronRight,
+  ChevronLeft,
   Sparkles,
   Check,
   User,
@@ -65,7 +66,8 @@ export default function SalonDetailPage() {
             href="/salons"
             className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-[#0B0B0D]/80 backdrop-blur-md border border-charcoal-border text-xs text-white hover:border-gold transition-colors"
           >
-            <span>← Back to Salons</span>
+            <ChevronLeft className="w-3.5 h-3.5" />
+            <span>Back to Salons</span>
           </Link>
         </div>
       </div>
@@ -130,8 +132,8 @@ export default function SalonDetailPage() {
 
           {/* Live Queue Banner in Salon Profile */}
           <div className="mt-6 p-4 rounded-xl bg-[#0B0B0D] border border-charcoal-border flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div className="flex items-center space-x-4">
-              <div className="w-3 h-3 rounded-full bg-green-500 animate-pulse"></div>
+            <div className="flex items-center space-x-3">
+              <div className="w-2.5 h-2.5 rounded-full bg-green-500"></div>
               <div>
                 <p className="text-xs text-[#A1A1AA] uppercase font-semibold">Live Salon Queue</p>
                 <p className="text-sm text-white font-bold">

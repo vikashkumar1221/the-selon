@@ -56,23 +56,6 @@ body {
   border: 1px solid rgba(212, 175, 55, 0.15);
 }
 
-/* Live Queue Pulsing Indicator */
-@keyframes goldPulse {
-  0% {
-    box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.6);
-  }
-  70% {
-    box-shadow: 0 0 0 12px rgba(212, 175, 55, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(212, 175, 55, 0);
-  }
-}
-
-.pulse-gold-beacon {
-  animation: goldPulse 2s infinite;
-}
-
 /* Smooth input styling */
 input, select, textarea {
   color-scheme: dark;

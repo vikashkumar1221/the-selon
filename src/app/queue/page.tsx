@@ -139,9 +139,8 @@ export default function LiveQueuePage() {
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-charcoal-border/60">
           <div>
-            <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-gold/15 text-gold border border-gold/30 text-xs font-semibold mb-2">
-              <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-              <span>Live Synchronized WebSocket Queue</span>
+            <div className="inline-flex items-center px-3 py-1 rounded-full bg-gold/15 text-gold border border-gold/30 text-xs font-semibold mb-2">
+              <span>Live Queue Tracker</span>
             </div>
             <h1 className="text-3xl font-extrabold text-white tracking-tight">
               Live Queue Tracker
@@ -295,10 +294,10 @@ export default function LiveQueuePage() {
               <div className="p-4 rounded-2xl bg-[#0B0B0D] border border-charcoal-border flex flex-col sm:flex-row items-center justify-between gap-4">
                 <div className="flex items-center space-x-3">
                   <div
-                    className={`w-3.5 h-3.5 rounded-full ${
+                    className={`w-3 h-3 rounded-full ${
                       activeBooking.status === "in_service"
-                        ? "bg-green-500 animate-ping"
-                        : "bg-gold animate-pulse"
+                        ? "bg-green-500"
+                        : "bg-gold"
                     }`}
                   ></div>
                   <div>

@@ -206,8 +206,9 @@ function BookingContent() {
                         fill
                         className="object-cover"
                       />
-                      <div className="absolute top-2 right-2 px-2 py-0.5 rounded bg-[#0B0B0D]/80 border border-gold-border/30 text-[10px] text-gold font-bold">
-                        ★ {salon.rating}
+                      <div className="absolute top-2 right-2 px-2 py-0.5 rounded bg-[#0B0B0D]/80 border border-gold-border/30 text-[10px] text-gold font-bold flex items-center space-x-1">
+                        <Star className="w-3 h-3 text-gold fill-gold" />
+                        <span>{salon.rating}</span>
                       </div>
                     </div>
                     <h3 className="text-sm font-bold text-white">{salon.name}</h3>
@@ -388,7 +389,7 @@ function BookingContent() {
                   <div className="space-y-0.5 flex-1">
                     <h4 className="text-sm font-bold text-white">{staff.name}</h4>
                     <p className="text-xs text-gold">{staff.roleTitle}</p>
-                    <p className="text-[10px] text-[#A1A1AA]">★ {staff.rating} ({staff.reviewsCount} reviews)</p>
+                    <p className="text-[10px] text-[#A1A1AA]">Rating: {staff.rating} ({staff.reviewsCount} reviews)</p>
                   </div>
                 </div>
               ))}
@@ -437,7 +438,7 @@ function BookingContent() {
               >
                 <div className="flex items-center justify-between mb-2">
                   <div className="flex items-center space-x-2">
-                    <div className="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse"></div>
+                    <div className="w-2.5 h-2.5 rounded-full bg-green-500"></div>
                     <span className="text-xs font-bold uppercase tracking-wider text-green-400">
                       Live Walk-In Queue
                     </span>
@@ -678,7 +679,7 @@ function BookingContent() {
                   #{confirmedBooking.queueTokenNumber < 10 ? `0${confirmedBooking.queueTokenNumber}` : confirmedBooking.queueTokenNumber}
                 </p>
                 <div className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-green-500/10 text-green-400 border border-green-500/20 text-xs font-semibold mt-2">
-                  <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                  <span className="w-2 h-2 rounded-full bg-green-500"></span>
                   <span>Active in Live Queue</span>
                 </div>
               </div>

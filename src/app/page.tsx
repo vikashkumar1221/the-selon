@@ -77,10 +77,9 @@ export default function HomePage() {
         {/* Hero Content */}
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center space-y-8">
           {/* Badge */}
-          <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-[#171719]/90 border border-gold-border/40 backdrop-blur-md shadow-gold">
-            <span className="w-2 h-2 rounded-full bg-gold animate-ping"></span>
-            <span className="text-xs uppercase tracking-[0.2em] font-semibold text-white">
-              Next-Gen Multi-Salon Architecture
+          <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-[#171719] border border-gold-border/40 shadow-gold">
+            <span className="text-xs uppercase tracking-[0.2em] font-semibold text-gold">
+              Multi-Salon Booking & Live Queue
             </span>
           </div>
 
@@ -121,7 +120,10 @@ export default function HomePage() {
               <p className="text-xs text-[#A1A1AA]">Live Queue Sync</p>
             </div>
             <div className="p-3">
-              <p className="text-2xl font-bold text-gold">4.9★</p>
+              <p className="text-2xl font-bold text-gold flex items-center">
+                4.9
+                <Star className="w-4 h-4 text-gold fill-gold ml-1 inline" />
+              </p>
               <p className="text-xs text-[#A1A1AA]">Top Barber Rating</p>
             </div>
             <div className="p-3">
@@ -209,20 +211,20 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 3. LIVE QUEUE TECHNOLOGY SHOWCASE (THE CORE VALUE PROP) */}
-      <section className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* 3. LIVE QUEUE TECHNOLOGY SHOWCASE */}
+      <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
             <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-gold/10 border border-gold/30 text-gold text-xs font-semibold">
-              <Clock className="w-3.5 h-3.5 animate-spin" />
-              <span>Proprietary Algorithm</span>
+              <Clock className="w-3.5 h-3.5" />
+              <span>Real-Time Floor Tracking</span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">
               Real-Time Queue Management. <br />
-              <span className="text-gold">No More Waiting in Chairs.</span>
+              <span className="text-gold">Zero Waiting.</span>
             </h2>
             <p className="text-[#A1A1AA] leading-relaxed text-sm sm:text-base">
-              Traditional salons force you to wait in stuffy lobbies. SalonX dynamically predicts your exact chair time using active barber throughput, requested service duration, and real-time status updates from the barber’s tablet.
+              Track your exact chair time using active barber throughput, requested service duration, and real-time updates from the salon floor.
             </p>
 
             <div className="space-y-3 pt-2">
@@ -231,9 +233,9 @@ export default function HomePage() {
                   <CheckCircle2 className="w-4 h-4 text-gold" />
                 </div>
                 <div>
-                  <h4 className="text-sm font-semibold text-white">Dynamic Duration Factoring</h4>
+                  <h4 className="text-sm font-semibold text-white">Dynamic Duration Calculation</h4>
                   <p className="text-xs text-[#A1A1AA]">
-                    Each haircut, facial, and shave has unique time weights calculated automatically.
+                    Each haircut, facial, and shave duration is calculated automatically.
                   </p>
                 </div>
               </div>
@@ -242,9 +244,9 @@ export default function HomePage() {
                   <CheckCircle2 className="w-4 h-4 text-gold" />
                 </div>
                 <div>
-                  <h4 className="text-sm font-semibold text-white">Live Turnaround Alerts</h4>
+                  <h4 className="text-sm font-semibold text-white">Turnaround Alerts</h4>
                   <p className="text-xs text-[#A1A1AA]">
-                    Arrive just in time when your token is 1 customer away.
+                    Arrive right when your token is called.
                   </p>
                 </div>
               </div>
@@ -253,9 +255,9 @@ export default function HomePage() {
                   <CheckCircle2 className="w-4 h-4 text-gold" />
                 </div>
                 <div>
-                  <h4 className="text-sm font-semibold text-white">Concurrency Safe Token Generation</h4>
+                  <h4 className="text-sm font-semibold text-white">Concurrency-Safe Tokens</h4>
                   <p className="text-xs text-[#A1A1AA]">
-                    Zero duplicate tokens or double bookings in the same chair queue.
+                    Guaranteed unique tokens with zero overlapping bookings.
                   </p>
                 </div>
               </div>
@@ -274,13 +276,12 @@ export default function HomePage() {
 
           {/* Interactive Live Queue Simulator Card */}
           <div className="relative">
-            <div className="absolute -inset-1 bg-gradient-to-r from-gold/30 to-gold-dark/20 rounded-3xl blur-xl opacity-60"></div>
             <div className="relative bg-[#171719] border border-gold-border/50 rounded-2xl p-6 sm:p-8 shadow-2xl">
               <div className="flex items-center justify-between pb-4 border-b border-charcoal-border">
-                <div className="flex items-center space-x-3">
-                  <div className="w-3 h-3 rounded-full bg-green-500 animate-pulse"></div>
+                <div className="flex items-center space-x-2">
+                  <div className="w-2.5 h-2.5 rounded-full bg-green-500"></div>
                   <span className="text-xs font-semibold uppercase tracking-wider text-green-400">
-                    Live Broadcast Active
+                    Live Queue Active
                   </span>
                 </div>
                 <span className="text-xs text-[#A1A1AA]">The Royal Crown Barbershop</span>
@@ -397,8 +398,7 @@ export default function HomePage() {
                   </div>
 
                   {/* Live Queue Badge */}
-                  <div className="absolute bottom-3 left-3 px-2.5 py-1 rounded-md bg-[#0B0B0D]/90 backdrop-blur-md border border-green-500/40 flex items-center space-x-1.5 text-xs text-green-400">
-                    <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></div>
+                  <div className="absolute bottom-3 left-3 px-2.5 py-1 rounded-md bg-[#0B0B0D]/90 backdrop-blur-md border border-charcoal-border flex items-center space-x-1.5 text-xs text-green-400">
                     <span className="font-medium">
                       Serving #{salon.currentServingToken} • {salon.activeQueueCount} Waiting
                     </span>

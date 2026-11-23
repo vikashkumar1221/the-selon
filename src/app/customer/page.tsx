@@ -262,7 +262,10 @@ export default function CustomerDashboard() {
                   <h4 className="text-sm font-bold text-white">{salon.name}</h4>
                   <p className="text-xs text-[#A1A1AA]">{salon.address}</p>
                   <div className="pt-2 flex items-center justify-between">
-                    <span className="text-xs text-gold font-bold">★ {salon.rating}</span>
+                    <div className="flex items-center space-x-1 text-xs text-gold font-bold">
+                      <Star className="w-3.5 h-3.5 fill-gold text-gold" />
+                      <span>{salon.rating}</span>
+                    </div>
                     <Link
                       href={`/book?salonId=${salon.id}`}
                       className="px-3 py-1 rounded-lg bg-gold text-black text-xs font-bold uppercase"

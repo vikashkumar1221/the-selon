@@ -17,6 +17,7 @@ import {
   Sparkles,
   Search,
   Filter,
+  Star,
 } from "lucide-react";
 import { useSalonStore } from "@/lib/store/salonStore";
 import { MOCK_USERS } from "@/lib/data/mockData";
@@ -236,7 +237,12 @@ export default function SuperAdminDashboard() {
                     <tr key={s.id} className="hover:bg-[#0B0B0D]/50 text-[#A1A1AA]">
                       <td className="py-3 px-3 text-white font-bold">{s.name}</td>
                       <td className="py-3 px-3">{s.area}, {s.city}</td>
-                      <td className="py-3 px-3 text-gold font-bold">★ {s.rating}</td>
+                      <td className="py-3 px-3 text-gold font-bold">
+                        <div className="flex items-center space-x-1">
+                          <Star className="w-3.5 h-3.5 fill-gold text-gold" />
+                          <span>{s.rating}</span>
+                        </div>
+                      </td>
                       <td className="py-3 px-3">{s.services.length} items</td>
                       <td className="py-3 px-3 text-green-400">Serving #{s.currentServingToken}</td>
                       <td className="py-3 px-3">

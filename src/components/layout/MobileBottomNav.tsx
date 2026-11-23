@@ -40,9 +40,6 @@ export default function MobileBottomNav() {
             >
               <div className="relative">
                 <Icon className={`w-5 h-5 ${isActive ? "text-gold" : ""}`} />
-                {item.name === "Queue" && (
-                  <span className="absolute -top-1 -right-1.5 w-2 h-2 rounded-full bg-gold animate-ping"></span>
-                )}
               </div>
               <span className={`text-[10px] mt-1 font-medium ${isActive ? "font-semibold text-white" : ""}`}>
                 {item.name}

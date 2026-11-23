@@ -21,6 +21,7 @@ import {
   Search,
   Check,
   ChevronRight,
+  X,
 } from "lucide-react";
 import { useSalonStore } from "@/lib/store/salonStore";
 import { Booking, BookingStatus, ServiceItem, SalonStaff } from "@/types";
@@ -563,9 +564,9 @@ export default function SalonOwnerDashboard() {
                 </h3>
                 <button
                   onClick={() => setWalkinModalOpen(false)}
-                  className="text-[#71717A] hover:text-white"
+                  className="text-[#71717A] hover:text-white p-1"
                 >
-                  ✕
+                  <X className="w-4 h-4" />
                 </button>
               </div>
 
