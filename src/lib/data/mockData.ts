@@ -214,7 +214,7 @@ export const MOCK_SALONS: Salon[] = [
     longitude: 77.5946,
     phone: "+91 80 4123 9900",
     email: "reception@auramaison.com",
-    rating: 4.95,
+    rating: 4.9,
     reviewCount: 420,
     bannerImage:
       "https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=1200&auto=format&fit=crop",
@@ -275,6 +275,45 @@ export const MOCK_SALONS: Salon[] = [
     ],
     services: [
       {
+        id: "srv_haircut_styling",
+        salon_id: "salon_aura_maison",
+        name: "Haircut & Styling",
+        category: "Haircut",
+        description:
+          "Precision haircut, wash, scalp massage, blow dry and bespoke styling by expert stylists.",
+        price: 800,
+        durationMinutes: 30,
+        popular: true,
+        image_url:
+          "https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=300&auto=format&fit=crop",
+      },
+      {
+        id: "srv_hair_spa",
+        salon_id: "salon_aura_maison",
+        name: "Hair Spa",
+        category: "Spa",
+        description:
+          "Intensive deep nourishment hair spa treatment with relaxing head and shoulder massage.",
+        price: 1200,
+        durationMinutes: 45,
+        popular: true,
+        image_url:
+          "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=80&w=300&auto=format&fit=crop",
+      },
+      {
+        id: "srv_beard_grooming",
+        salon_id: "salon_aura_maison",
+        name: "Beard Grooming",
+        category: "Beard",
+        description:
+          "Beard trimming, shape up, razor edging, conditioning beard oil, and hot towel finish.",
+        price: 600,
+        durationMinutes: 30,
+        popular: true,
+        image_url:
+          "https://images.unsplash.com/photo-1621605815971-fbc98d665033?q=80&w=300&auto=format&fit=crop",
+      },
+      {
         id: "srv_head_spa",
         salon_id: "salon_aura_maison",
         name: "Japanese Botanical Head Spa (60 Min)",
@@ -283,7 +322,7 @@ export const MOCK_SALONS: Salon[] = [
           "Microscopic scalp diagnostic, bubbling organic clay detox, cascading waterfall mist, acupressure neck release.",
         price: 2400,
         durationMinutes: 60,
-        popular: true,
+        popular: false,
         image_url:
           "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=80&w=600&auto=format&fit=crop",
       },
@@ -296,7 +335,7 @@ export const MOCK_SALONS: Salon[] = [
           "Hand-painted dimensional highlights with Olaplex molecular bond builder and conditioning gloss toner.",
         price: 4800,
         durationMinutes: 120,
-        popular: true,
+        popular: false,
         image_url:
           "https://images.unsplash.com/photo-1562322140-8baeececf3df?q=80&w=600&auto=format&fit=crop",
       },
@@ -309,7 +348,7 @@ export const MOCK_SALONS: Salon[] = [
           "Custom facial geometry assessment, artistic texturing, hydrating Caviar mask, and silk blowout.",
         price: 1400,
         durationMinutes: 50,
-        popular: true,
+        popular: false,
         image_url:
           "https://images.unsplash.com/photo-1633681926022-84c23e8cb2d6?q=80&w=600&auto=format&fit=crop",
       },
@@ -377,6 +416,18 @@ export const MOCK_SALONS: Salon[] = [
     ],
     services: [
       {
+        id: "srv_classic_haircut",
+        salon_id: "salon_gentlemens_atelier",
+        name: "Classic Gentleman's Haircut",
+        category: "Haircut",
+        description: "Scissor & clipper precision haircut with hot lather neck clean and styling.",
+        price: 500,
+        durationMinutes: 30,
+        popular: true,
+        image_url:
+          "https://images.unsplash.com/photo-1585747860715-2ba37e788b70?q=80&w=600&auto=format&fit=crop",
+      },
+      {
         id: "srv_exec_cut",
         salon_id: "salon_gentlemens_atelier",
         name: "Executive Taper & Scalp Refresh",
@@ -389,6 +440,18 @@ export const MOCK_SALONS: Salon[] = [
           "https://images.unsplash.com/photo-1512690459411-b9245aed614b?q=80&w=600&auto=format&fit=crop",
       },
       {
+        id: "srv_beard_trim_ga",
+        salon_id: "salon_gentlemens_atelier",
+        name: "Express Beard Trim & Razor Line",
+        category: "Beard Trimming",
+        description: "Clipper contouring, mustache trim, and cheek razor line-up.",
+        price: 400,
+        durationMinutes: 20,
+        popular: false,
+        image_url:
+          "https://images.unsplash.com/photo-1621605815971-fbc98d665033?q=80&w=600&auto=format&fit=crop",
+      },
+      {
         id: "srv_beard_spa",
         salon_id: "salon_gentlemens_atelier",
         name: "Beard Sculpture & Hot Oil Spa",
@@ -399,6 +462,18 @@ export const MOCK_SALONS: Salon[] = [
         popular: true,
         image_url:
           "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?q=80&w=600&auto=format&fit=crop",
+      },
+      {
+        id: "srv_charcoal_spa",
+        salon_id: "salon_gentlemens_atelier",
+        name: "Charcoal Deep Pore Detox & Facial",
+        category: "Facial",
+        description: "Ultrasonic blackhead extraction, volcanic peel, and cooling jade roller massage.",
+        price: 950,
+        durationMinutes: 40,
+        popular: false,
+        image_url:
+          "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?q=80&w=600&auto=format&fit=crop",
       },
     ],
   },
@@ -464,9 +539,21 @@ export const MOCK_SALONS: Salon[] = [
     ],
     services: [
       {
+        id: "srv_classic_cut_vr",
+        salon_id: "salon_velvet_razor",
+        name: "Classic Scissor Haircut & Style",
+        category: "Haircut",
+        description: "Custom sectioning, scissor texturizing, rinse, and matte pomade styling.",
+        price: 450,
+        durationMinutes: 30,
+        popular: false,
+        image_url:
+          "https://images.unsplash.com/photo-1599351431202-1e0f0137899a?q=80&w=600&auto=format&fit=crop",
+      },
+      {
         id: "srv_fade_master",
         salon_id: "salon_velvet_razor",
-        name: "Precision Zero/Skin Fade",
+        name: "Precision Zero / Skin Fade Haircut",
         category: "Haircut",
         description: "Foil shaver bald finish, smooth gradient blend, and crisp razor line-up.",
         price: 550,
@@ -483,9 +570,33 @@ export const MOCK_SALONS: Salon[] = [
         description: "Clipper trim, straight blade line enhancement, refreshing cold spray.",
         price: 400,
         durationMinutes: 20,
-        popular: false,
+        popular: true,
         image_url:
           "https://images.unsplash.com/photo-1621605815971-fbc98d665033?q=80&w=600&auto=format&fit=crop",
+      },
+      {
+        id: "srv_full_beard_vr",
+        salon_id: "salon_velvet_razor",
+        name: "Beard Sculpture & Hot Towel Treatment",
+        category: "Beard Trimming",
+        description: "Hot towel soften, precision razor shape up, beard wash & beard butter.",
+        price: 500,
+        durationMinutes: 25,
+        popular: false,
+        image_url:
+          "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?q=80&w=600&auto=format&fit=crop",
+      },
+      {
+        id: "srv_head_massage_vr",
+        salon_id: "salon_velvet_razor",
+        name: "Scalp Invigoration & Head Massage",
+        category: "Spa",
+        description: "Cooling menthol scrub, pressurized pressure point temple and scalp massage.",
+        price: 350,
+        durationMinutes: 20,
+        popular: false,
+        image_url:
+          "https://images.unsplash.com/photo-1512690459411-b9245aed614b?q=80&w=600&auto=format&fit=crop",
       },
     ],
   },

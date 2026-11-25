@@ -404,9 +404,9 @@ export default function SalonOwnerDashboard() {
                         <span
                           className={`px-2 py-0.5 rounded-full text-[10px] font-bold uppercase ${
                             bk.status === "completed"
-                              ? "bg-green-500/10 text-green-400"
+                              ? "bg-white/[0.08] text-[#D4D4D8]"
                               : bk.status === "in_service"
-                              ? "bg-blue-500/10 text-blue-400"
+                              ? "bg-gold/15 text-gold"
                               : bk.status === "cancelled"
                               ? "bg-red-500/10 text-red-400"
                               : "bg-gold/10 text-gold"

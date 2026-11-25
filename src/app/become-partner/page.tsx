@@ -88,7 +88,7 @@ export default function BecomePartnerPage() {
         <div className="bg-[#171719] rounded-3xl border border-gold-border/40 p-6 sm:p-10 shadow-gold">
           {submitted ? (
             <div className="py-12 text-center space-y-4">
-              <div className="w-16 h-16 rounded-full bg-green-500/20 text-green-400 border border-green-500/40 flex items-center justify-center mx-auto">
+              <div className="w-16 h-16 rounded-full bg-gold/20 text-gold border border-gold/40 flex items-center justify-center mx-auto">
                 <CheckCircle2 className="w-8 h-8" />
               </div>
               <h2 className="text-2xl font-bold text-white">Application Submitted to Super Admin</h2>

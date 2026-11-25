@@ -136,7 +136,7 @@ export default function LiveQueuePage() {
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/[0.08]">
           <div>
             <div className="inline-flex items-center px-3 py-1 rounded-full bg-gold/15 text-gold border border-gold/30 text-xs font-semibold mb-2 shadow-sm">
-              <span className="w-1.5 h-1.5 rounded-full bg-gold mr-2 animate-ping" />
+              <Clock className="w-3.5 h-3.5 mr-1.5 text-gold" />
               <span>Live Queue Monitor</span>
             </div>
             <h1 className="text-3xl font-extrabold text-white tracking-tight">
@@ -215,7 +215,7 @@ export default function LiveQueuePage() {
                     onClick={() => setNotificationTurnOn(!notificationTurnOn)}
                     className={`px-3.5 py-2 rounded-xl text-xs font-semibold flex items-center space-x-2 border transition-all ${
                       notificationTurnOn
-                        ? "bg-green-500/15 border-green-500/40 text-green-400 shadow-[0_0_15px_rgba(74,222,128,0.2)]"
+                        ? "bg-gold/15 border-gold/40 text-gold shadow-gold"
                         : "bg-[#08080B] border-white/[0.08] text-[#A1A1AA] hover:text-white"
                     }`}
                   >
@@ -251,7 +251,7 @@ export default function LiveQueuePage() {
                   <p className="text-5xl font-black text-white mt-2">
                     #{nowServingToken < 10 ? `0${nowServingToken}` : nowServingToken}
                   </p>
-                  <span className="inline-block mt-2 text-[10px] px-2.5 py-0.5 rounded-full bg-green-500/10 text-green-400 font-semibold border border-green-500/20">
+                  <span className="inline-block mt-2 text-[10px] px-2.5 py-0.5 rounded-full bg-gold/10 text-gold font-semibold border border-gold/30">
                     Chair Active
                   </span>
                 </div>
@@ -308,7 +308,7 @@ export default function LiveQueuePage() {
                     <p className="text-[10px] text-[#A1A1AA]">3. Next Up</p>
                   </div>
                   <div className="space-y-1.5">
-                    <div className={`h-2 rounded-full transition-all ${activeBooking.status === "in_service" ? "bg-green-500 shadow-[0_0_8px_#22c55e]" : "bg-white/[0.08]"}`} />
+                    <div className={`h-2 rounded-full transition-all ${activeBooking.status === "in_service" ? "bg-gold shadow-[0_0_8px_#D4AF37]" : "bg-white/[0.08]"}`} />
                     <p className="text-[10px] text-[#A1A1AA]">4. Seated in Chair</p>
                   </div>
                 </div>

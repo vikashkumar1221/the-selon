@@ -246,7 +246,7 @@ export default function SuperAdminDashboard() {
                       <td className="py-3 px-3">{s.services.length} items</td>
                       <td className="py-3 px-3 text-green-400">Serving #{s.currentServingToken}</td>
                       <td className="py-3 px-3">
-                        <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-green-500/10 text-green-400">
+                        <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-gold/15 text-gold border border-gold/30">
                           Active
                         </span>
                       </td>

@@ -154,7 +154,7 @@ function BookingContent() {
                       currentStep === st.num
                         ? "bg-gold text-black shadow-gold ring-4 ring-gold/20"
                         : currentStep > st.num
-                        ? "bg-[#22C55E] text-black"
+                        ? "bg-gold text-black"
                         : "bg-[#121217] text-[#71717A] border border-white/[0.08]"
                     }`}
                   >
@@ -438,8 +438,8 @@ function BookingContent() {
               >
                 <div className="flex items-center justify-between mb-2">
                   <div className="flex items-center space-x-2">
-                    <div className="w-2.5 h-2.5 rounded-full bg-green-500"></div>
-                    <span className="text-xs font-bold uppercase tracking-wider text-green-400">
+                    <Clock className="w-4 h-4 text-gold" />
+                    <span className="text-xs font-bold uppercase tracking-wider text-gold">
                       Live Walk-In Queue
                     </span>
                   </div>
@@ -678,8 +678,8 @@ function BookingContent() {
                 <p className="text-6xl font-black text-gold tracking-tight mt-1">
                   #{confirmedBooking.queueTokenNumber < 10 ? `0${confirmedBooking.queueTokenNumber}` : confirmedBooking.queueTokenNumber}
                 </p>
-                <div className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-green-500/10 text-green-400 border border-green-500/20 text-xs font-semibold mt-2">
-                  <span className="w-2 h-2 rounded-full bg-green-500"></span>
+                <div className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-gold/15 text-gold border border-gold/30 text-xs font-semibold mt-2">
+                  <Clock className="w-3.5 h-3.5 text-gold" />
                   <span>Active in Live Queue</span>
                 </div>
               </div>

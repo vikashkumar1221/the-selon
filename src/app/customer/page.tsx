@@ -168,7 +168,7 @@ export default function CustomerDashboard() {
                       <div className="flex items-center space-x-2">
                         <h3 className="text-base font-bold text-white">{bk.salonName}</h3>
                         <span className="text-[10px] font-mono text-[#71717A]">{bk.bookingCode}</span>
-                        <span className="text-[9px] px-2 py-0.5 rounded-full bg-green-500/10 text-green-400 border border-green-500/20 uppercase font-bold">
+                        <span className="text-[9px] px-2 py-0.5 rounded-full bg-gold/15 text-gold border border-gold/30 uppercase font-bold">
                           {bk.status === "in_service" ? "In Chair" : "Confirmed"}
                         </span>
                       </div>
@@ -233,7 +233,7 @@ export default function CustomerDashboard() {
                     <span
                       className={`text-[10px] px-2 py-0.5 rounded-full uppercase font-bold ${
                         bk.status === "completed"
-                          ? "bg-green-500/10 text-green-400"
+                          ? "bg-gold/15 text-gold"
                           : "bg-red-500/10 text-red-400"
                       }`}
                     >

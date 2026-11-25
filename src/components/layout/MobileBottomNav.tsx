@@ -46,9 +46,6 @@ export default function MobileBottomNav() {
                     isActive ? "text-gold stroke-[2.3]" : "stroke-[1.8]"
                   }`}
                 />
-                {isActive && (
-                  <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-gold shadow-[0_0_8px_#D4AF37]" />
-                )}
               </div>
               <span
                 className={`text-[10px] mt-1.5 tracking-tight ${

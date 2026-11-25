@@ -266,114 +266,152 @@ function SalonsContent() {
                 </button>
               </div>
             ) : (
-              filteredSalons.map((salon) => (
-                <div
-                  key={salon.id}
-                  className="luxury-card rounded-2xl p-5 sm:p-6 flex flex-col md:flex-row gap-6 group shadow-lg border border-white/[0.08] hover:border-gold/40"
-                >
-                  {/* Salon Thumbnail */}
-                  <div className="relative w-full md:w-64 h-48 md:h-auto rounded-xl overflow-hidden shrink-0">
-                    <Image
-                      src={salon.bannerImage}
-                      alt={salon.name}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute top-2.5 left-2.5 px-2.5 py-1 rounded-md bg-[#08080B]/90 border border-white/[0.08] text-[10px] text-green-400 font-semibold backdrop-blur-md">
-                      Now #{salon.currentServingToken}
-                    </div>
-                  </div>
+              filteredSalons.map((salon) => {
+                const haircutService = salon.services.find(
+                  (s) =>
+                    s.category.toLowerCase().includes("hair") ||
+                    s.name.toLowerCase().includes("hair") ||
+                    s.name.toLowerCase().includes("cut")
+                );
+                const beardService = salon.services.find(
+                  (s) =>
+                    s.category.toLowerCase().includes("beard") ||
+                    s.name.toLowerCase().includes("beard") ||
+                    s.name.toLowerCase().includes("shave")
+                );
 
-                  {/* Salon Details */}
-                  <div className="flex-1 flex flex-col justify-between space-y-3">
-                    <div>
-                      <div className="flex items-start justify-between">
-                        <div>
-                          <div className="flex items-center space-x-2">
-                            <h3 className="text-xl font-bold text-white group-hover:text-gold transition-colors">
-                              {salon.name}
-                            </h3>
-                            {salon.isVerified && (
-                              <span title="Verified SalonX Partner">
-                                <ShieldCheck className="w-4 h-4 text-gold shrink-0" />
-                              </span>
-                            )}
+                return (
+                  <div
+                    key={salon.id}
+                    className="luxury-card rounded-2xl p-5 sm:p-6 flex flex-col md:flex-row gap-6 group shadow-lg border border-white/[0.08] hover:border-gold/40 transition-all duration-300"
+                  >
+                    {/* Salon Thumbnail - Clickable */}
+                    <Link
+                      href={`/salons/${salon.id}`}
+                      className="relative w-full md:w-64 h-48 md:h-auto rounded-xl overflow-hidden shrink-0 block"
+                    >
+                      <Image
+                        src={salon.bannerImage}
+                        alt={salon.name}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                      <div className="absolute top-2.5 left-2.5 px-2.5 py-1 rounded-md bg-[#08080B]/90 border border-white/[0.08] text-[10px] text-green-400 font-semibold backdrop-blur-md">
+                        Now #{salon.currentServingToken}
+                      </div>
+                    </Link>
+
+                    {/* Salon Details */}
+                    <div className="flex-1 flex flex-col justify-between space-y-3">
+                      <div>
+                        <div className="flex items-start justify-between">
+                          <div>
+                            <Link href={`/salons/${salon.id}`} className="flex items-center space-x-2 group-hover:text-gold transition-colors">
+                              <h3 className="text-xl font-bold text-white group-hover:text-gold transition-colors">
+                                {salon.name}
+                              </h3>
+                              {salon.isVerified && (
+                                <span title="Verified SalonX Partner">
+                                  <ShieldCheck className="w-4 h-4 text-gold shrink-0" />
+                                </span>
+                              )}
+                            </Link>
+                            <p className="text-xs text-[#A1A1AA] flex items-center mt-1">
+                              <MapPin className="w-3.5 h-3.5 text-gold mr-1.5 shrink-0" />
+                              {salon.address}, {salon.city}
+                            </p>
                           </div>
-                          <p className="text-xs text-[#A1A1AA] flex items-center mt-1">
-                            <MapPin className="w-3.5 h-3.5 text-gold mr-1.5 shrink-0" />
-                            {salon.address}, {salon.city}
-                          </p>
+
+                          {/* Rating */}
+                          <div className="flex items-center space-x-1 px-2.5 py-1 rounded-xl bg-[#08080B] border border-white/[0.08] text-xs">
+                            <Star className="w-3.5 h-3.5 text-gold fill-gold" />
+                            <span className="font-bold text-white">{salon.rating}</span>
+                            <span className="text-[#71717A]">({salon.reviewCount})</span>
+                          </div>
                         </div>
 
-                        {/* Rating */}
-                        <div className="flex items-center space-x-1 px-2.5 py-1 rounded-xl bg-[#08080B] border border-white/[0.08] text-xs">
-                          <Star className="w-3.5 h-3.5 text-gold fill-gold" />
-                          <span className="font-bold text-white">{salon.rating}</span>
-                          <span className="text-[#71717A]">({salon.reviewCount})</span>
-                        </div>
-                      </div>
-
-                      <p className="text-xs text-[#71717A] mt-2 line-clamp-2">
-                        {salon.description}
-                      </p>
-                    </div>
-
-                    {/* Services and Barbers Bar */}
-                    <div className="pt-2 border-t border-white/[0.06] grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-                      <div>
-                        <span className="text-[10px] uppercase tracking-wider text-[#71717A] font-semibold">
-                          Available Barbers:
-                        </span>
-                        <div className="flex items-center space-x-2 mt-1">
-                          {salon.staff.map((stf) => (
-                            <div
-                              key={stf.id}
-                              className="text-[11px] px-2 py-0.5 rounded-lg bg-[#08080B] text-white border border-white/[0.06] flex items-center space-x-1"
-                            >
-                              <span className="w-1.5 h-1.5 rounded-full bg-green-500" />
-                              <span>{stf.name}</span>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-
-                      <div>
-                        <span className="text-[10px] uppercase tracking-wider text-[#71717A] font-semibold">
-                          Live Queue Status:
-                        </span>
-                        <p className="text-xs text-white mt-1 flex items-center space-x-2">
-                          <span className="text-gold font-bold">{salon.activeQueueCount} in Queue</span>
-                          <span className="text-[#71717A]">•</span>
-                          <span>Est. wait: ~{salon.activeQueueCount * salon.estimatedWaitPerCustomerMinutes} mins</span>
+                        <p className="text-xs text-[#71717A] mt-2 line-clamp-2">
+                          {salon.description}
                         </p>
                       </div>
-                    </div>
 
-                    {/* Footer Row */}
-                    <div className="pt-3 border-t border-white/[0.06] flex items-center justify-between">
-                      <div>
-                        <p className="text-[10px] uppercase tracking-wider text-[#71717A]">Starting From</p>
-                        <p className="text-lg font-black text-gold">₹{salon.startingPrice}</p>
+                      {/* Haircut & Beard Quick Pricing Pills */}
+                      <div className="flex flex-wrap items-center gap-2 text-xs bg-[#08080B] p-2.5 rounded-xl border border-white/[0.06]">
+                        {haircutService && (
+                          <div className="flex items-center space-x-1">
+                            <Scissors className="w-3.5 h-3.5 text-gold" />
+                            <span className="text-[10px] text-[#71717A] uppercase font-semibold">Haircut:</span>
+                            <span className="text-white font-bold">₹{haircutService.price}</span>
+                          </div>
+                        )}
+                        {haircutService && beardService && (
+                          <span className="text-[#71717A]">•</span>
+                        )}
+                        {beardService && (
+                          <div className="flex items-center space-x-1">
+                            <span className="text-xs">🧔</span>
+                            <span className="text-[10px] text-[#71717A] uppercase font-semibold">Beard:</span>
+                            <span className="text-white font-bold">₹{beardService.price}</span>
+                          </div>
+                        )}
                       </div>
 
-                      <div className="flex items-center space-x-3">
-                        <Link
-                          href={`/salons/${salon.id}`}
-                          className="px-4 py-2 text-xs font-semibold text-white bg-[#08080B] border border-white/[0.08] hover:border-gold rounded-xl transition-colors"
-                        >
-                          View Atelier
-                        </Link>
-                        <Link
-                          href={`/book?salonId=${salon.id}`}
-                          className="gold-btn px-5 py-2 text-xs rounded-xl shadow-gold uppercase tracking-wider font-bold"
-                        >
-                          Book / Join Queue
-                        </Link>
+                      {/* Services and Barbers Bar */}
+                      <div className="pt-2 border-t border-white/[0.06] grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                        <div>
+                          <span className="text-[10px] uppercase tracking-wider text-[#71717A] font-semibold">
+                            Available Barbers:
+                          </span>
+                          <div className="flex items-center space-x-2 mt-1">
+                            {salon.staff.map((stf) => (
+                              <div
+                                key={stf.id}
+                                className="text-[11px] px-2.5 py-0.5 rounded-lg bg-[#08080B] text-[#D4D4D8] border border-white/[0.08]"
+                              >
+                                <span>{stf.name}</span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+
+                        <div>
+                          <span className="text-[10px] uppercase tracking-wider text-[#71717A] font-semibold">
+                            Live Queue Status:
+                          </span>
+                          <p className="text-xs text-white mt-1 flex items-center space-x-2">
+                            <span className="text-gold font-bold">{salon.activeQueueCount} in Queue</span>
+                            <span className="text-[#71717A]">•</span>
+                            <span>Est. wait: ~{salon.activeQueueCount * salon.estimatedWaitPerCustomerMinutes} mins</span>
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Footer Row */}
+                      <div className="pt-3 border-t border-white/[0.06] flex items-center justify-between">
+                        <div>
+                          <p className="text-[10px] uppercase tracking-wider text-[#71717A]">Starting From</p>
+                          <p className="text-lg font-black text-gold">₹{salon.startingPrice}</p>
+                        </div>
+
+                        <div className="flex items-center space-x-3">
+                          <Link
+                            href={`/salons/${salon.id}`}
+                            className="px-4 py-2 text-xs font-semibold text-white bg-[#08080B] border border-white/[0.1] hover:border-gold hover:text-gold rounded-xl transition-colors"
+                          >
+                            View Details & Rates →
+                          </Link>
+                          <Link
+                            href={`/book?salonId=${salon.id}`}
+                            className="gold-btn px-5 py-2 text-xs rounded-xl shadow-gold uppercase tracking-wider font-bold"
+                          >
+                            Book / Join Queue
+                          </Link>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              ))
+                );
+              })
             )}
           </div>
         </div>

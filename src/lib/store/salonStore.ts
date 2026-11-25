@@ -10,10 +10,10 @@ import {
 } from "../data/mockData";
 import { calculateQueueWaitTime } from "../queue/waitTimeCalculator";
 
-const STORAGE_KEY_SALONS = "salonx_salons_v1";
-const STORAGE_KEY_BOOKINGS = "salonx_bookings_v1";
-const STORAGE_KEY_USER = "salonx_current_user_v1";
-const STORAGE_KEY_METRICS = "salonx_metrics_v1";
+const STORAGE_KEY_SALONS = "salonx_salons_v3";
+const STORAGE_KEY_BOOKINGS = "salonx_bookings_v3";
+const STORAGE_KEY_USER = "salonx_current_user_v3";
+const STORAGE_KEY_METRICS = "salonx_metrics_v3";
 const QUEUE_EVENT_NAME = "salonx_queue_updated";
 
 export function getStoredData<T>(key: string, defaultValue: T): T {
