@@ -140,7 +140,7 @@ function BookingContent() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#0B0B0D] py-10 pb-28">
+    <div className="min-h-screen bg-[#08080B] py-10 pb-28">
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
         {/* Progress Tracker Bar */}
         {currentStep <= 5 && (
@@ -155,7 +155,7 @@ function BookingContent() {
                         ? "bg-gold text-black shadow-gold ring-4 ring-gold/20"
                         : currentStep > st.num
                         ? "bg-[#22C55E] text-black"
-                        : "bg-[#141418] text-[#71717A] border border-white/[0.08]"
+                        : "bg-[#121217] text-[#71717A] border border-white/[0.08]"
                     }`}
                   >
                     {currentStep > st.num ? <CheckCircle2 className="w-5 h-5" /> : st.num}
@@ -175,7 +175,7 @@ function BookingContent() {
 
         {/* STEP 1: SELECT SALON */}
         {currentStep === 1 && (
-          <div className="bg-[#141418] rounded-2xl border border-white/[0.08] p-6 sm:p-8 space-y-6 shadow-xl">
+          <div className="bg-[#121217] rounded-2xl border border-white/[0.08] p-6 sm:p-8 space-y-6 shadow-xl">
             <div>
               <h2 className="text-xl font-bold text-white">Step 1: Choose Luxury Atelier</h2>
               <p className="text-xs text-[#71717A] mt-1">
@@ -196,7 +196,7 @@ function BookingContent() {
                     className={`p-4 rounded-xl border cursor-pointer transition-all ${
                       selectedSalonId === salon.id
                         ? "bg-gold/10 border-gold shadow-gold"
-                        : "bg-[#0B0B0D] border-white/[0.08] hover:border-gold/40"
+                        : "bg-[#08080B] border-white/[0.08] hover:border-gold/40"
                     }`}
                   >
                     <div className="relative h-28 rounded-lg overflow-hidden mb-3">
@@ -206,7 +206,7 @@ function BookingContent() {
                         fill
                         className="object-cover"
                       />
-                      <div className="absolute top-2 right-2 px-2 py-0.5 rounded bg-[#0B0B0D]/85 border border-white/[0.1] text-[10px] text-gold font-bold flex items-center space-x-1">
+                      <div className="absolute top-2 right-2 px-2 py-0.5 rounded bg-[#08080B]/85 border border-white/[0.1] text-[10px] text-gold font-bold flex items-center space-x-1">
                         <Star className="w-3 h-3 text-gold fill-gold" />
                         <span>{salon.rating}</span>
                       </div>
@@ -240,7 +240,7 @@ function BookingContent() {
 
         {/* STEP 2: SELECT SERVICES */}
         {currentStep === 2 && (
-          <div className="bg-[#141418] rounded-2xl border border-white/[0.08] p-6 sm:p-8 space-y-6 shadow-xl">
+          <div className="bg-[#121217] rounded-2xl border border-white/[0.08] p-6 sm:p-8 space-y-6 shadow-xl">
             <div className="flex items-center justify-between">
               <div>
                 <h2 className="text-xl font-bold text-white">Step 2: Select Services</h2>
@@ -263,7 +263,7 @@ function BookingContent() {
                     className={`p-4 rounded-xl border cursor-pointer transition-all flex items-center justify-between ${
                       isSelected
                         ? "bg-gold/10 border-gold shadow-gold"
-                        : "bg-[#0B0B0D] border-white/[0.08] hover:border-gold/30"
+                        : "bg-[#08080B] border-white/[0.08] hover:border-gold/30"
                     }`}
                   >
                     <div className="space-y-1">
@@ -288,7 +288,7 @@ function BookingContent() {
                         className={`w-5 h-5 rounded-full ml-auto mt-2 flex items-center justify-center border ${
                           isSelected
                             ? "bg-gold border-gold text-black"
-                            : "border-white/[0.1] bg-[#141418]"
+                            : "border-white/[0.1] bg-[#121217]"
                         }`}
                       >
                         {isSelected && <CheckCircle2 className="w-4 h-4" />}
@@ -327,7 +327,7 @@ function BookingContent() {
 
         {/* STEP 3: PREFERRED BARBER */}
         {currentStep === 3 && (
-          <div className="bg-[#141418] rounded-2xl border border-white/[0.08] p-6 sm:p-8 space-y-6 shadow-xl">
+          <div className="bg-[#121217] rounded-2xl border border-white/[0.08] p-6 sm:p-8 space-y-6 shadow-xl">
             <div>
               <h2 className="text-xl font-bold text-white">Step 3: Preferred Barber or Stylist</h2>
               <p className="text-xs text-[#71717A] mt-1">
@@ -341,7 +341,7 @@ function BookingContent() {
               className={`p-4 rounded-xl border cursor-pointer transition-all flex items-center justify-between ${
                 selectedStaffId === "any"
                   ? "bg-gold/10 border-gold shadow-gold"
-                  : "bg-[#0B0B0D] border-white/[0.08] hover:border-gold/30"
+                  : "bg-[#08080B] border-white/[0.08] hover:border-gold/30"
               }`}
             >
               <div className="flex items-center space-x-3">
@@ -375,7 +375,7 @@ function BookingContent() {
                   className={`p-4 rounded-xl border cursor-pointer transition-all flex items-center space-x-3 ${
                     selectedStaffId === staff.id
                       ? "bg-gold/10 border-gold shadow-gold"
-                      : "bg-[#0B0B0D] border-white/[0.08] hover:border-gold/30"
+                      : "bg-[#08080B] border-white/[0.08] hover:border-gold/30"
                   }`}
                 >
                   <div className="relative w-12 h-12 rounded-xl overflow-hidden shrink-0 border border-white/[0.08]">
@@ -415,7 +415,7 @@ function BookingContent() {
 
         {/* STEP 4: DATE & LIVE WALK-IN QUEUE OR APPOINTMENT */}
         {currentStep === 4 && (
-          <div className="bg-[#141418] rounded-2xl border border-white/[0.08] p-6 sm:p-8 space-y-6 shadow-xl">
+          <div className="bg-[#121217] rounded-2xl border border-white/[0.08] p-6 sm:p-8 space-y-6 shadow-xl">
             <div>
               <h2 className="text-xl font-bold text-white">Step 4: Scheduling & Queue Mode</h2>
               <p className="text-xs text-[#71717A] mt-1">
@@ -433,7 +433,7 @@ function BookingContent() {
                 className={`p-5 rounded-xl border cursor-pointer transition-all ${
                   bookingType === "walk_in"
                     ? "bg-gold/15 border-gold shadow-gold"
-                    : "bg-[#0B0B0D] border-white/[0.08] hover:border-gold/30"
+                    : "bg-[#08080B] border-white/[0.08] hover:border-gold/30"
                 }`}
               >
                 <div className="flex items-center justify-between mb-2">
@@ -459,7 +459,7 @@ function BookingContent() {
                 className={`p-5 rounded-xl border cursor-pointer transition-all ${
                   bookingType === "appointment"
                     ? "bg-gold/15 border-gold shadow-gold"
-                    : "bg-[#0B0B0D] border-white/[0.08] hover:border-gold/30"
+                    : "bg-[#08080B] border-white/[0.08] hover:border-gold/30"
                 }`}
               >
                 <div className="flex items-center justify-between mb-2">
@@ -487,7 +487,7 @@ function BookingContent() {
                   value={bookingDate}
                   min={new Date().toISOString().split("T")[0]}
                   onChange={(e) => setBookingDate(e.target.value)}
-                  className="w-full bg-[#0B0B0D] border border-white/[0.08] rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-gold"
+                  className="w-full bg-[#08080B] border border-white/[0.08] rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-gold"
                 />
               </div>
 
@@ -497,7 +497,7 @@ function BookingContent() {
                   <select
                     value={timeSlot}
                     onChange={(e) => setTimeSlot(e.target.value)}
-                    className="w-full bg-[#0B0B0D] border border-white/[0.08] rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-gold"
+                    className="w-full bg-[#08080B] border border-white/[0.08] rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-gold"
                   >
                     <option value="10:00">10:00 AM</option>
                     <option value="11:30">11:30 AM</option>
@@ -531,7 +531,7 @@ function BookingContent() {
 
         {/* STEP 5: REVIEW, CUSTOMER INFO & PAYMENT CONFIRMATION */}
         {currentStep === 5 && (
-          <div className="bg-[#141418] rounded-2xl border border-white/[0.08] p-6 sm:p-8 space-y-6 shadow-xl">
+          <div className="bg-[#121217] rounded-2xl border border-white/[0.08] p-6 sm:p-8 space-y-6 shadow-xl">
             <div>
               <h2 className="text-xl font-bold text-white">Step 5: Review & Confirm Booking</h2>
               <p className="text-xs text-[#71717A] mt-1">
@@ -547,7 +547,7 @@ function BookingContent() {
                   type="text"
                   value={customerName}
                   onChange={(e) => setCustomerName(e.target.value)}
-                  className="w-full bg-[#0B0B0D] border border-white/[0.08] rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-gold"
+                  className="w-full bg-[#08080B] border border-white/[0.08] rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-gold"
                   required
                 />
               </div>
@@ -557,7 +557,7 @@ function BookingContent() {
                   type="tel"
                   value={customerPhone}
                   onChange={(e) => setCustomerPhone(e.target.value)}
-                  className="w-full bg-[#0B0B0D] border border-white/[0.08] rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-gold"
+                  className="w-full bg-[#08080B] border border-white/[0.08] rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-gold"
                   required
                 />
               </div>
@@ -567,14 +567,14 @@ function BookingContent() {
                   type="email"
                   value={customerEmail}
                   onChange={(e) => setCustomerEmail(e.target.value)}
-                  className="w-full bg-[#0B0B0D] border border-white/[0.08] rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-gold"
+                  className="w-full bg-[#08080B] border border-white/[0.08] rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-gold"
                   required
                 />
               </div>
             </div>
 
             {/* Summary Card */}
-            <div className="p-5 rounded-xl bg-[#0B0B0D] border border-white/[0.06] space-y-3">
+            <div className="p-5 rounded-xl bg-[#08080B] border border-white/[0.06] space-y-3">
               <div className="flex justify-between items-start pb-3 border-b border-white/[0.06]">
                 <div>
                   <h4 className="text-sm font-bold text-white">{selectedSalon.name}</h4>
@@ -611,11 +611,11 @@ function BookingContent() {
             <div className="space-y-2">
               <label className="text-xs font-semibold text-[#71717A]">Payment Preference</label>
               <div className="grid grid-cols-2 gap-3 text-xs">
-                <div className="p-3 rounded-xl bg-[#0B0B0D] border border-gold flex items-center space-x-2 text-white font-medium">
+                <div className="p-3 rounded-xl bg-[#08080B] border border-gold flex items-center space-x-2 text-white font-medium">
                   <CreditCard className="w-4 h-4 text-gold" />
                   <span>Pay at Salon (Cash / UPI / Card)</span>
                 </div>
-                <div className="p-3 rounded-xl bg-[#0B0B0D] border border-white/[0.08] flex items-center space-x-2 text-[#71717A]">
+                <div className="p-3 rounded-xl bg-[#08080B] border border-white/[0.08] flex items-center space-x-2 text-[#71717A]">
                   <Sparkles className="w-4 h-4" />
                   <span>Online Prepaid</span>
                 </div>
@@ -641,7 +641,7 @@ function BookingContent() {
 
         {/* STEP 6: CONFIRMATION SUCCESS WITH LIVE TOKEN CARD */}
         {currentStep === 6 && confirmedBooking && (
-          <div className="bg-[#141418] rounded-2xl border border-white/[0.1] p-6 sm:p-10 shadow-2xl text-center space-y-6">
+          <div className="bg-[#121217] rounded-2xl border border-white/[0.1] p-6 sm:p-10 shadow-2xl text-center space-y-6">
             <div className="w-16 h-16 rounded-full bg-gold/15 border border-gold/40 flex items-center justify-center mx-auto text-gold">
               <CheckCircle2 className="w-8 h-8" />
             </div>
@@ -659,7 +659,7 @@ function BookingContent() {
             </div>
 
             {/* Live Token Pass */}
-            <div className="max-w-md mx-auto bg-[#0B0B0D] rounded-2xl border border-gold/40 p-6 relative overflow-hidden shadow-2xl text-left">
+            <div className="max-w-md mx-auto bg-[#08080B] rounded-2xl border border-gold/40 p-6 relative overflow-hidden shadow-2xl text-left">
               <div className="flex items-center justify-between pb-4 border-b border-white/[0.08]">
                 <div>
                   <p className="text-[10px] text-gold uppercase tracking-wider font-bold">Digital Boarding Pass</p>
@@ -717,7 +717,7 @@ function BookingContent() {
               </Link>
               <Link
                 href="/customer"
-                className="w-full sm:w-auto px-6 py-3 rounded-xl bg-[#0B0B0D] text-white border border-white/[0.1] hover:border-gold text-xs font-semibold uppercase tracking-wider transition-colors"
+                className="w-full sm:w-auto px-6 py-3 rounded-xl bg-[#08080B] text-white border border-white/[0.1] hover:border-gold text-xs font-semibold uppercase tracking-wider transition-colors"
               >
                 View in My Bookings
               </Link>
@@ -731,7 +731,7 @@ function BookingContent() {
 
 export default function BookingPage() {
   return (
-    <Suspense fallback={<div className="min-h-screen bg-[#0B0B0D] p-8 text-gold">Loading booking studio...</div>}>
+    <Suspense fallback={<div className="min-h-screen bg-[#08080B] p-8 text-gold">Loading booking studio...</div>}>
       <BookingContent />
     </Suspense>
   );

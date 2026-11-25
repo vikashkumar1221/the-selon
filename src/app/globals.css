@@ -3,40 +3,50 @@
 @tailwind utilities;
 
 :root {
-  --background: #0B0B0D;
+  --background: #08080B;
   --foreground: #FFFFFF;
 }
 
 body {
-  color: #FFFFFF;
-  background-color: #0B0B0D;
+  color: #F4F4F5;
+  background-color: #08080B;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   overflow-x: hidden;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.015em;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Custom Luxury Scrollbar */
+/* Custom Luxury Gold Scrollbar */
 ::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #0B0B0D;
+  background: #08080B;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #232328;
+  background: #1F1F27;
   border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: #D4AF37;
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
 }
 
 /* Luxury gold text gradients */
 .text-gold-gradient {
-  background: linear-gradient(135deg, #FFFFFF 0%, #F5DE88 35%, #D4AF37 70%, #BFA15F 100%);
+  background: linear-gradient(135deg, #FFFFFF 0%, #F8E7A2 30%, #D4AF37 65%, #BFA15F 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gold-gradient-rich {
+  background: linear-gradient(135deg, #FFF9E6 0%, #F5DE88 35%, #D4AF37 70%, #9D7B1C 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -47,46 +57,108 @@ body {
 
 /* Luxury card surfaces */
 .luxury-card {
-  background: #121215;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  background: linear-gradient(180deg, rgba(22, 22, 28, 0.85) 0%, rgba(14, 14, 18, 0.95) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
 }
 
 .luxury-card:hover {
-  border-color: rgba(212, 175, 55, 0.35);
-  box-shadow: 0 12px 40px -10px rgba(0, 0, 0, 0.8), 0 0 20px -5px rgba(212, 175, 55, 0.12);
+  border-color: rgba(212, 175, 55, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 18px 45px -12px rgba(0, 0, 0, 0.9), 0 0 25px -4px rgba(212, 175, 55, 0.18);
 }
 
 .luxury-card-elevated {
-  background: #17171C;
+  background: linear-gradient(180deg, rgba(26, 26, 34, 0.9) 0%, rgba(18, 18, 24, 0.95) 100%);
   border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 14px 40px -10px rgba(0, 0, 0, 0.85);
 }
 
 .gold-glow {
-  box-shadow: 0 0 35px -5px rgba(212, 175, 55, 0.22);
+  box-shadow: 0 0 40px -4px rgba(212, 175, 55, 0.28);
 }
 
 .gold-glass {
-  background: rgba(18, 18, 21, 0.75);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: rgba(16, 16, 22, 0.82);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
   border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
 }
 
+/* Primary Luxury Gold Button */
 .gold-btn {
-  background: linear-gradient(135deg, #E5C564 0%, #D4AF37 50%, #BFA15F 100%);
-  color: #000000;
+  background: linear-gradient(135deg, #FBF1C9 0%, #E5C564 30%, #D4AF37 60%, #BFA15F 100%);
+  color: #08080B;
   font-weight: 700;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  letter-spacing: 0.05em;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 4px 18px -2px rgba(212, 175, 55, 0.35);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
 }
 
 .gold-btn:hover {
-  opacity: 0.95;
-  transform: translateY(-1px);
-  box-shadow: 0 6px 20px -4px rgba(212, 175, 55, 0.35);
+  transform: translateY(-1.5px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), 0 8px 25px -4px rgba(212, 175, 55, 0.5);
+  filter: brightness(1.04);
 }
 
-/* Clean input styling */
+.gold-btn:active {
+  transform: translateY(0.5px);
+  box-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
+}
+
+/* Secondary Luxury Outline Button */
+.luxury-btn-secondary {
+  background: rgba(22, 22, 28, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #F4F4F5;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.luxury-btn-secondary:hover {
+  background: rgba(30, 30, 40, 0.9);
+  border-color: rgba(212, 175, 55, 0.5);
+  color: #FFFFFF;
+  box-shadow: 0 0 20px -4px rgba(212, 175, 55, 0.2);
+  transform: translateY(-1px);
+}
+
+/* Subtle Ambient Glow Orb */
+.ambient-gold-orb {
+  position: absolute;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.14) 0%, rgba(212, 175, 55, 0.02) 50%, transparent 70%);
+  filter: blur(50px);
+  pointer-events: none;
+}
+
+/* Luxury Badge */
+.badge-gold {
+  background: rgba(212, 175, 55, 0.1);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  color: #F3DE7C;
+}
+
+/* Clean input styling with luxury focus */
 input, select, textarea {
   color-scheme: dark;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: rgba(212, 175, 55, 0.6) !important;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15) !important;
+}
+
+/* Selection highlight */
+::selection {
+  background: #D4AF37;
+  color: #08080B;
 }

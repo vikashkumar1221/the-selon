@@ -47,7 +47,7 @@ export default function SalonDetailPage() {
       : salon.services.filter((s) => s.category === selectedCategory);
 
   return (
-    <div className="min-h-screen bg-[#0B0B0D] pb-24">
+    <div className="min-h-screen bg-[#08080B] pb-24">
       {/* 1. HERO BANNER */}
       <div className="relative h-72 sm:h-96 w-full">
         <Image
@@ -57,14 +57,14 @@ export default function SalonDetailPage() {
           priority
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0B0B0D] via-[#0B0B0D]/60 to-transparent"></div>
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0B0B0D]/80 via-transparent to-[#0B0B0D]/80"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-[#08080B] via-[#08080B]/60 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-[#08080B]/80 via-transparent to-[#08080B]/80"></div>
 
         {/* Back navigation */}
         <div className="absolute top-6 left-4 sm:left-8 z-10">
           <Link
             href="/salons"
-            className="inline-flex items-center space-x-1.5 px-3.5 py-1.5 rounded-lg bg-[#0B0B0D]/85 backdrop-blur-md border border-white/[0.08] text-xs text-white hover:border-gold transition-colors"
+            className="inline-flex items-center space-x-1.5 px-3.5 py-1.5 rounded-lg bg-[#08080B]/85 backdrop-blur-md border border-white/[0.08] text-xs text-white hover:border-gold transition-colors"
           >
             <ChevronLeft className="w-3.5 h-3.5" />
             <span>Back to Salons</span>
@@ -74,7 +74,7 @@ export default function SalonDetailPage() {
 
       {/* 2. SALON HEADER CONTAINER */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-20 relative z-20">
-        <div className="bg-[#141418] rounded-3xl border border-white/[0.08] p-6 sm:p-8 shadow-2xl">
+        <div className="bg-[#121217] rounded-3xl border border-white/[0.08] p-6 sm:p-8 shadow-2xl">
           <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-6 pb-6 border-b border-white/[0.08]">
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
@@ -107,7 +107,7 @@ export default function SalonDetailPage() {
 
             {/* Quick action buttons & Rating */}
             <div className="flex flex-col sm:flex-row lg:flex-col items-start lg:items-end gap-3 shrink-0">
-              <div className="flex items-center space-x-2 px-3.5 py-1.5 rounded-xl bg-[#0B0B0D] border border-white/[0.08] text-xs">
+              <div className="flex items-center space-x-2 px-3.5 py-1.5 rounded-xl bg-[#08080B] border border-white/[0.08] text-xs">
                 <Star className="w-4 h-4 text-gold fill-gold" />
                 <span className="text-sm font-bold text-white">{salon.rating}</span>
                 <span className="text-xs text-[#71717A]">({salon.reviewCount} reviews)</span>
@@ -116,7 +116,7 @@ export default function SalonDetailPage() {
               <div className="flex items-center space-x-2">
                 <Link
                   href={`/book?salonId=${salon.id}&type=walk_in`}
-                  className="px-4 py-2.5 rounded-xl bg-[#0B0B0D] border border-gold/50 text-gold text-xs font-semibold uppercase tracking-wider hover:bg-gold/10 transition-colors"
+                  className="px-4 py-2.5 rounded-xl bg-[#08080B] border border-gold/50 text-gold text-xs font-semibold uppercase tracking-wider hover:bg-gold/10 transition-colors"
                 >
                   Join Live Queue
                 </Link>
@@ -131,7 +131,7 @@ export default function SalonDetailPage() {
           </div>
 
           {/* Live Queue Banner in Salon Profile */}
-          <div className="mt-6 p-4 rounded-xl bg-[#0B0B0D] border border-white/[0.06] flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="mt-6 p-4 rounded-xl bg-[#08080B] border border-white/[0.06] flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="flex items-center space-x-3">
               <div className="w-2.5 h-2.5 rounded-full bg-green-500"></div>
               <div>
@@ -155,7 +155,7 @@ export default function SalonDetailPage() {
           {/* Left Column: Services & Barbers */}
           <div className="lg:col-span-2 space-y-8">
             {/* Services Section */}
-            <div className="bg-[#141418] rounded-3xl border border-white/[0.08] p-6 sm:p-8 space-y-6 shadow-xl">
+            <div className="bg-[#121217] rounded-3xl border border-white/[0.08] p-6 sm:p-8 space-y-6 shadow-xl">
               <div className="flex items-center justify-between pb-4 border-b border-white/[0.06]">
                 <h2 className="text-xl font-bold text-white flex items-center">
                   <Scissors className="w-5 h-5 text-gold mr-2" />
@@ -175,7 +175,7 @@ export default function SalonDetailPage() {
                     className={`px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all ${
                       selectedCategory === cat
                         ? "bg-gold text-black font-semibold shadow-gold"
-                        : "bg-[#0B0B0D] text-[#A1A1AA] border border-white/[0.08] hover:text-white"
+                        : "bg-[#08080B] text-[#A1A1AA] border border-white/[0.08] hover:text-white"
                     }`}
                   >
                     {cat}
@@ -188,7 +188,7 @@ export default function SalonDetailPage() {
                 {displayedServices.map((service) => (
                   <div
                     key={service.id}
-                    className="p-4 rounded-xl bg-[#0B0B0D] border border-white/[0.06] hover:border-gold/30 transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-4"
+                    className="p-4 rounded-xl bg-[#08080B] border border-white/[0.06] hover:border-gold/30 transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-4"
                   >
                     <div className="space-y-1">
                       <div className="flex items-center space-x-2">
@@ -214,7 +214,7 @@ export default function SalonDetailPage() {
                       <p className="text-base font-extrabold text-gold">₹{service.price}</p>
                       <Link
                         href={`/book?salonId=${salon.id}&serviceId=${service.id}`}
-                        className="px-4 py-2 rounded-lg bg-[#141418] border border-white/[0.08] hover:border-gold text-xs text-white font-medium hover:text-gold transition-colors"
+                        className="px-4 py-2 rounded-lg bg-[#121217] border border-white/[0.08] hover:border-gold text-xs text-white font-medium hover:text-gold transition-colors"
                       >
                         Select & Book
                       </Link>
@@ -225,7 +225,7 @@ export default function SalonDetailPage() {
             </div>
 
             {/* Master Barbers & Staff Roster */}
-            <div className="bg-[#141418] rounded-3xl border border-white/[0.08] p-6 sm:p-8 space-y-6 shadow-xl">
+            <div className="bg-[#121217] rounded-3xl border border-white/[0.08] p-6 sm:p-8 space-y-6 shadow-xl">
               <h2 className="text-xl font-bold text-white flex items-center">
                 <Sparkles className="w-5 h-5 text-gold mr-2" />
                 Master Stylists & Barbers
@@ -235,7 +235,7 @@ export default function SalonDetailPage() {
                 {salon.staff.map((staff) => (
                   <div
                     key={staff.id}
-                    className="p-4 rounded-xl bg-[#0B0B0D] border border-white/[0.06] flex items-center space-x-4"
+                    className="p-4 rounded-xl bg-[#08080B] border border-white/[0.06] flex items-center space-x-4"
                   >
                     <div className="relative w-14 h-14 rounded-xl overflow-hidden shrink-0 border border-white/[0.08]">
                       <Image
@@ -262,7 +262,7 @@ export default function SalonDetailPage() {
             </div>
 
             {/* Customer Reviews Section */}
-            <div className="bg-[#141418] rounded-3xl border border-white/[0.08] p-6 sm:p-8 space-y-6 shadow-xl">
+            <div className="bg-[#121217] rounded-3xl border border-white/[0.08] p-6 sm:p-8 space-y-6 shadow-xl">
               <div className="flex items-center justify-between pb-4 border-b border-white/[0.06]">
                 <h2 className="text-xl font-bold text-white flex items-center">
                   <Star className="w-5 h-5 text-gold fill-gold mr-2" />
@@ -275,7 +275,7 @@ export default function SalonDetailPage() {
                 {reviews.map((rev) => (
                   <div
                     key={rev.id}
-                    className="p-4 rounded-xl bg-[#0B0B0D] border border-white/[0.06] space-y-2"
+                    className="p-4 rounded-xl bg-[#08080B] border border-white/[0.06] space-y-2"
                   >
                     <div className="flex items-center justify-between">
                       <div className="flex items-center space-x-2">
@@ -301,7 +301,7 @@ export default function SalonDetailPage() {
           {/* Right Column: Operating Hours, Amenities & Location */}
           <div className="space-y-6">
             {/* Operating Hours Box */}
-            <div className="bg-[#141418] rounded-2xl border border-white/[0.08] p-6 space-y-4 shadow-lg">
+            <div className="bg-[#121217] rounded-2xl border border-white/[0.08] p-6 space-y-4 shadow-lg">
               <h3 className="text-xs font-bold uppercase tracking-wider text-white flex items-center">
                 <Clock className="w-4 h-4 text-gold mr-2" />
                 Operating Hours
@@ -322,7 +322,7 @@ export default function SalonDetailPage() {
             </div>
 
             {/* Atelier Amenities */}
-            <div className="bg-[#141418] rounded-2xl border border-white/[0.08] p-6 space-y-4 shadow-lg">
+            <div className="bg-[#121217] rounded-2xl border border-white/[0.08] p-6 space-y-4 shadow-lg">
               <h3 className="text-xs font-bold uppercase tracking-wider text-white flex items-center">
                 <Sparkles className="w-4 h-4 text-gold mr-2" />
                 Atelier Amenities
@@ -339,7 +339,7 @@ export default function SalonDetailPage() {
 
             {/* Gallery Images */}
             {salon.galleryImages.length > 0 && (
-              <div className="bg-[#141418] rounded-2xl border border-white/[0.08] p-6 space-y-4 shadow-lg">
+              <div className="bg-[#121217] rounded-2xl border border-white/[0.08] p-6 space-y-4 shadow-lg">
                 <h3 className="text-xs font-bold uppercase tracking-wider text-white">
                   Gallery
                 </h3>

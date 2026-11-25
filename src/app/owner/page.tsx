@@ -141,10 +141,10 @@ export default function SalonOwnerDashboard() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0B0B0D] py-10 pb-28">
+    <div className="min-h-screen bg-[#08080B] py-10 pb-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         {/* TOP BAR: SALON BRAND & QUICK ACTIONS */}
-        <div className="bg-[#141418] rounded-3xl border border-white/[0.08] p-6 shadow-2xl flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div className="bg-[#121217] rounded-3xl border border-white/[0.08] p-6 shadow-2xl flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div className="flex items-center space-x-4">
             <div className="relative w-14 h-14 rounded-xl overflow-hidden border border-white/[0.08] shrink-0">
               <Image src={salon.bannerImage} alt={salon.name} fill className="object-cover" />
@@ -172,7 +172,7 @@ export default function SalonOwnerDashboard() {
             </button>
             <Link
               href={`/salons/${salon.id}`}
-              className="px-4 py-2.5 rounded-xl bg-[#0B0B0D] text-white border border-white/[0.08] hover:border-gold text-xs font-semibold transition-colors"
+              className="px-4 py-2.5 rounded-xl bg-[#08080B] text-white border border-white/[0.08] hover:border-gold text-xs font-semibold transition-colors"
             >
               View Public Page
             </Link>
@@ -181,37 +181,37 @@ export default function SalonOwnerDashboard() {
 
         {/* METRICS ROW */}
         <div className="grid grid-cols-2 lg:grid-cols-6 gap-3 sm:gap-4">
-          <div className="bg-[#141418] p-4 rounded-xl border border-white/[0.08]">
+          <div className="bg-[#121217] p-4 rounded-xl border border-white/[0.08]">
             <p className="text-[10px] uppercase tracking-wider text-[#71717A] font-semibold">Total Today</p>
             <p className="text-2xl font-extrabold text-white mt-1">{salonBookings.length}</p>
             <p className="text-[10px] text-[#71717A] mt-1">Appointments & Walk-ins</p>
           </div>
 
-          <div className="bg-[#141418] p-4 rounded-xl border border-gold/40 shadow-gold">
+          <div className="bg-[#121217] p-4 rounded-xl border border-gold/40 shadow-gold">
             <p className="text-[10px] uppercase tracking-wider text-gold font-semibold">Active Queue</p>
             <p className="text-2xl font-extrabold text-gold mt-1">{activeQueue.length}</p>
             <p className="text-[10px] text-[#71717A] mt-1">Waiting & In-Chair</p>
           </div>
 
-          <div className="bg-[#141418] p-4 rounded-xl border border-white/[0.08]">
+          <div className="bg-[#121217] p-4 rounded-xl border border-white/[0.08]">
             <p className="text-[10px] uppercase tracking-wider text-[#71717A] font-semibold">Serving Token</p>
             <p className="text-2xl font-extrabold text-green-400 mt-1">#{salon.currentServingToken}</p>
             <p className="text-[10px] text-[#71717A] mt-1">Current Chair</p>
           </div>
 
-          <div className="bg-[#141418] p-4 rounded-xl border border-white/[0.08]">
+          <div className="bg-[#121217] p-4 rounded-xl border border-white/[0.08]">
             <p className="text-[10px] uppercase tracking-wider text-[#71717A] font-semibold">Completed</p>
             <p className="text-2xl font-extrabold text-white mt-1">{completedToday.length}</p>
             <p className="text-[10px] text-green-400 mt-1">100% Satisfied</p>
           </div>
 
-          <div className="bg-[#141418] p-4 rounded-xl border border-white/[0.08]">
+          <div className="bg-[#121217] p-4 rounded-xl border border-white/[0.08]">
             <p className="text-[10px] uppercase tracking-wider text-[#71717A] font-semibold">Cancelled / Skip</p>
             <p className="text-2xl font-extrabold text-[#71717A] mt-1">{cancelledToday.length}</p>
             <p className="text-[10px] text-[#71717A] mt-1">Logged reasons</p>
           </div>
 
-          <div className="bg-[#141418] p-4 rounded-xl border border-white/[0.08]">
+          <div className="bg-[#121217] p-4 rounded-xl border border-white/[0.08]">
             <p className="text-[10px] uppercase tracking-wider text-gold font-semibold">Today Revenue</p>
             <p className="text-2xl font-extrabold text-white mt-1">₹{todayRevenue}</p>
             <p className="text-[10px] text-gold mt-1">Gross Inflow</p>
@@ -289,7 +289,7 @@ export default function SalonOwnerDashboard() {
                       className={`p-5 rounded-xl border transition-all flex flex-col md:flex-row md:items-center justify-between gap-4 ${
                         isInChair
                           ? "bg-green-500/10 border-green-500/50 shadow-gold"
-                          : "bg-[#0B0B0D] border-charcoal-border hover:border-gold/30"
+                          : "bg-[#08080B] border-charcoal-border hover:border-gold/30"
                       }`}
                     >
                       {/* Left: Token info */}
@@ -393,7 +393,7 @@ export default function SalonOwnerDashboard() {
                 </thead>
                 <tbody className="divide-y divide-charcoal-border/40">
                   {salonBookings.map((bk) => (
-                    <tr key={bk.id} className="hover:bg-[#0B0B0D]/50 text-[#A1A1AA]">
+                    <tr key={bk.id} className="hover:bg-[#08080B]/50 text-[#A1A1AA]">
                       <td className="py-3 px-3 font-bold text-gold">#{bk.queueTokenNumber}</td>
                       <td className="py-3 px-3 font-mono text-white">{bk.bookingCode}</td>
                       <td className="py-3 px-3 text-white font-medium">{bk.customerName}</td>
@@ -435,7 +435,7 @@ export default function SalonOwnerDashboard() {
               {salon.services.map((srv) => (
                 <div
                   key={srv.id}
-                  className="p-4 rounded-xl bg-[#0B0B0D] border border-charcoal-border flex items-center justify-between"
+                  className="p-4 rounded-xl bg-[#08080B] border border-charcoal-border flex items-center justify-between"
                 >
                   <div className="space-y-1">
                     <h4 className="text-sm font-bold text-white">{srv.name}</h4>
@@ -461,7 +461,7 @@ export default function SalonOwnerDashboard() {
               {salon.staff.map((st) => (
                 <div
                   key={st.id}
-                  className="p-5 rounded-xl bg-[#0B0B0D] border border-charcoal-border space-y-3"
+                  className="p-5 rounded-xl bg-[#08080B] border border-charcoal-border space-y-3"
                 >
                   <div className="flex items-center space-x-3">
                     <div className="relative w-12 h-12 rounded-xl overflow-hidden shrink-0 border border-gold-border/30">
@@ -509,7 +509,7 @@ export default function SalonOwnerDashboard() {
                   type="text"
                   value={salonName}
                   onChange={(e) => setSalonName(e.target.value)}
-                  className="w-full bg-[#0B0B0D] border border-charcoal-border rounded-xl px-3.5 py-2 text-xs text-white focus:outline-none focus:border-gold"
+                  className="w-full bg-[#08080B] border border-charcoal-border rounded-xl px-3.5 py-2 text-xs text-white focus:outline-none focus:border-gold"
                 />
               </div>
 
@@ -519,7 +519,7 @@ export default function SalonOwnerDashboard() {
                   type="text"
                   value={salonTagline}
                   onChange={(e) => setSalonTagline(e.target.value)}
-                  className="w-full bg-[#0B0B0D] border border-charcoal-border rounded-xl px-3.5 py-2 text-xs text-white focus:outline-none focus:border-gold"
+                  className="w-full bg-[#08080B] border border-charcoal-border rounded-xl px-3.5 py-2 text-xs text-white focus:outline-none focus:border-gold"
                 />
               </div>
 
@@ -529,7 +529,7 @@ export default function SalonOwnerDashboard() {
                   type="text"
                   value={salonPhone}
                   onChange={(e) => setSalonPhone(e.target.value)}
-                  className="w-full bg-[#0B0B0D] border border-charcoal-border rounded-xl px-3.5 py-2 text-xs text-white focus:outline-none focus:border-gold"
+                  className="w-full bg-[#08080B] border border-charcoal-border rounded-xl px-3.5 py-2 text-xs text-white focus:outline-none focus:border-gold"
                 />
               </div>
 
@@ -539,7 +539,7 @@ export default function SalonOwnerDashboard() {
                   type="text"
                   value={salonAddress}
                   onChange={(e) => setSalonAddress(e.target.value)}
-                  className="w-full bg-[#0B0B0D] border border-charcoal-border rounded-xl px-3.5 py-2 text-xs text-white focus:outline-none focus:border-gold"
+                  className="w-full bg-[#08080B] border border-charcoal-border rounded-xl px-3.5 py-2 text-xs text-white focus:outline-none focus:border-gold"
                 />
               </div>
 
@@ -579,7 +579,7 @@ export default function SalonOwnerDashboard() {
                     placeholder="e.g. Rahul Sharma"
                     value={walkinName}
                     onChange={(e) => setWalkinName(e.target.value)}
-                    className="w-full bg-[#0B0B0D] border border-charcoal-border rounded-xl px-3 py-2 text-white focus:outline-none focus:border-gold"
+                    className="w-full bg-[#08080B] border border-charcoal-border rounded-xl px-3 py-2 text-white focus:outline-none focus:border-gold"
                   />
                 </div>
 
@@ -590,7 +590,7 @@ export default function SalonOwnerDashboard() {
                     placeholder="+91 98765 00000"
                     value={walkinPhone}
                     onChange={(e) => setWalkinPhone(e.target.value)}
-                    className="w-full bg-[#0B0B0D] border border-charcoal-border rounded-xl px-3 py-2 text-white focus:outline-none focus:border-gold"
+                    className="w-full bg-[#08080B] border border-charcoal-border rounded-xl px-3 py-2 text-white focus:outline-none focus:border-gold"
                   />
                 </div>
 
@@ -599,7 +599,7 @@ export default function SalonOwnerDashboard() {
                   <select
                     value={walkinServiceId}
                     onChange={(e) => setWalkinServiceId(e.target.value)}
-                    className="w-full bg-[#0B0B0D] border border-charcoal-border rounded-xl px-3 py-2 text-white focus:outline-none focus:border-gold"
+                    className="w-full bg-[#08080B] border border-charcoal-border rounded-xl px-3 py-2 text-white focus:outline-none focus:border-gold"
                   >
                     {salon.services.map((s) => (
                       <option key={s.id} value={s.id}>
@@ -614,7 +614,7 @@ export default function SalonOwnerDashboard() {
                   <select
                     value={walkinStaffId}
                     onChange={(e) => setWalkinStaffId(e.target.value)}
-                    className="w-full bg-[#0B0B0D] border border-charcoal-border rounded-xl px-3 py-2 text-white focus:outline-none focus:border-gold"
+                    className="w-full bg-[#08080B] border border-charcoal-border rounded-xl px-3 py-2 text-white focus:outline-none focus:border-gold"
                   >
                     <option value="any">First Available Master Barber</option>
                     {salon.staff.map((st) => (
@@ -662,7 +662,7 @@ export default function SalonOwnerDashboard() {
                 <select
                   value={cancellationReason}
                   onChange={(e) => setCancellationReason(e.target.value)}
-                  className="w-full bg-[#0B0B0D] border border-charcoal-border rounded-xl px-3 py-2 text-white focus:outline-none focus:border-gold"
+                  className="w-full bg-[#08080B] border border-charcoal-border rounded-xl px-3 py-2 text-white focus:outline-none focus:border-gold"
                 >
                   <option value="Customer no-show">Customer did not show up</option>
                   <option value="Client requested rescheduling">Client requested rescheduling</option>

@@ -63,10 +63,10 @@ export default function CustomerDashboard() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0B0B0D] py-10 pb-28">
+    <div className="min-h-screen bg-[#08080B] py-10 pb-28">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 space-y-8">
         {/* Profile Card Header */}
-        <div className="bg-[#141418] rounded-3xl border border-white/[0.08] p-6 sm:p-8 shadow-2xl flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div className="bg-[#121217] rounded-3xl border border-white/[0.08] p-6 sm:p-8 shadow-2xl flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="flex items-center space-x-4">
             <div className="w-16 h-16 rounded-2xl bg-gold/15 border border-gold/40 flex items-center justify-center text-gold font-bold text-2xl shrink-0">
               {currentUser.name ? currentUser.name[0] : "A"}
@@ -92,7 +92,7 @@ export default function CustomerDashboard() {
             </Link>
             <Link
               href="/book"
-              className="px-4 py-2 rounded-xl bg-[#0B0B0D] text-white border border-white/[0.08] hover:border-gold text-xs font-semibold uppercase tracking-wider transition-colors"
+              className="px-4 py-2 rounded-xl bg-[#08080B] text-white border border-white/[0.08] hover:border-gold text-xs font-semibold uppercase tracking-wider transition-colors"
             >
               New Booking
             </Link>
@@ -157,7 +157,7 @@ export default function CustomerDashboard() {
                   className="bg-[#171719] rounded-2xl border border-gold-border/40 p-6 flex flex-col md:flex-row md:items-center justify-between gap-6 shadow-gold hover:border-gold transition-all"
                 >
                   <div className="flex items-start space-x-4">
-                    <div className="w-16 h-16 rounded-2xl bg-[#0B0B0D] border border-gold/40 flex flex-col items-center justify-center shrink-0 text-gold">
+                    <div className="w-16 h-16 rounded-2xl bg-[#08080B] border border-gold/40 flex flex-col items-center justify-center shrink-0 text-gold">
                       <span className="text-[9px] uppercase font-bold tracking-wider">TOKEN</span>
                       <span className="text-2xl font-black">
                         #{bk.queueTokenNumber < 10 ? `0${bk.queueTokenNumber}` : bk.queueTokenNumber}
@@ -198,7 +198,7 @@ export default function CustomerDashboard() {
                     </Link>
                     <button
                       onClick={() => setCancelModalBooking(bk)}
-                      className="px-3 py-2 rounded-xl bg-[#0B0B0D] border border-charcoal-border hover:border-red-500/40 text-xs text-[#A1A1AA] hover:text-red-400 transition-colors"
+                      className="px-3 py-2 rounded-xl bg-[#08080B] border border-charcoal-border hover:border-red-500/40 text-xs text-[#A1A1AA] hover:text-red-400 transition-colors"
                     >
                       Cancel
                     </button>
@@ -217,7 +217,7 @@ export default function CustomerDashboard() {
               {pastBookings.map((bk) => (
                 <div
                   key={bk.id}
-                  className="p-4 rounded-xl bg-[#0B0B0D] border border-charcoal-border flex items-center justify-between"
+                  className="p-4 rounded-xl bg-[#08080B] border border-charcoal-border flex items-center justify-between"
                 >
                   <div className="space-y-1">
                     <div className="flex items-center space-x-2">
@@ -295,7 +295,7 @@ export default function CustomerDashboard() {
                   type="text"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="w-full bg-[#0B0B0D] border border-charcoal-border rounded-xl px-3.5 py-2.5 text-white focus:outline-none focus:border-gold"
+                  className="w-full bg-[#08080B] border border-charcoal-border rounded-xl px-3.5 py-2.5 text-white focus:outline-none focus:border-gold"
                 />
               </div>
 
@@ -305,7 +305,7 @@ export default function CustomerDashboard() {
                   type="tel"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
-                  className="w-full bg-[#0B0B0D] border border-charcoal-border rounded-xl px-3.5 py-2.5 text-white focus:outline-none focus:border-gold"
+                  className="w-full bg-[#08080B] border border-charcoal-border rounded-xl px-3.5 py-2.5 text-white focus:outline-none focus:border-gold"
                 />
               </div>
 
@@ -315,7 +315,7 @@ export default function CustomerDashboard() {
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full bg-[#0B0B0D] border border-charcoal-border rounded-xl px-3.5 py-2.5 text-white focus:outline-none focus:border-gold"
+                  className="w-full bg-[#08080B] border border-charcoal-border rounded-xl px-3.5 py-2.5 text-white focus:outline-none focus:border-gold"
                 />
               </div>
 
@@ -346,7 +346,7 @@ export default function CustomerDashboard() {
                 <select
                   value={cancellationReason}
                   onChange={(e) => setCancellationReason(e.target.value)}
-                  className="w-full bg-[#0B0B0D] border border-charcoal-border rounded-xl px-3 py-2 text-white focus:outline-none focus:border-gold"
+                  className="w-full bg-[#08080B] border border-charcoal-border rounded-xl px-3 py-2 text-white focus:outline-none focus:border-gold"
                 >
                   <option value="Change of schedule">Change of schedule</option>
                   <option value="Booked by mistake">Booked by mistake</option>

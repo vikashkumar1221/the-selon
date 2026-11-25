@@ -130,18 +130,19 @@ export default function LiveQueuePage() {
       : Math.min(100, Math.max(10, Math.round((1 - customersAhead / (customersAhead + 3)) * 100)));
 
   return (
-    <div className="min-h-screen bg-[#0B0B0D] py-10 pb-28">
+    <div className="min-h-screen bg-[#08080B] py-10 pb-28 text-[#F4F4F5]">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 space-y-8">
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/[0.08]">
           <div>
-            <div className="inline-flex items-center px-3 py-1 rounded-full bg-gold/15 text-gold border border-gold/30 text-xs font-semibold mb-2">
+            <div className="inline-flex items-center px-3 py-1 rounded-full bg-gold/15 text-gold border border-gold/30 text-xs font-semibold mb-2 shadow-sm">
+              <span className="w-1.5 h-1.5 rounded-full bg-gold mr-2 animate-ping" />
               <span>Live Queue Monitor</span>
             </div>
             <h1 className="text-3xl font-extrabold text-white tracking-tight">
               Live Queue Tracker
             </h1>
-            <p className="text-xs text-[#71717A] mt-1">
+            <p className="text-xs text-[#71717A] mt-1 font-normal">
               Real-time monitoring for your salon visit with zero lobby waiting.
             </p>
           </div>
@@ -150,14 +151,14 @@ export default function LiveQueuePage() {
           <form onSubmit={handleSearchCode} className="flex items-center space-x-2">
             <input
               type="text"
-              placeholder="Enter Booking Code (e.g. SX-7112)"
+              placeholder="Enter Code (e.g. SX-7112)"
               value={searchCodeInput}
               onChange={(e) => setSearchCodeInput(e.target.value)}
-              className="bg-[#141418] border border-white/[0.08] rounded-xl px-3.5 py-2 text-xs text-white placeholder-[#71717A] focus:outline-none focus:border-gold"
+              className="bg-[#121217] border border-white/[0.1] rounded-xl px-3.5 py-2 text-xs text-white placeholder-[#71717A] focus:outline-none focus:border-gold transition-colors"
             />
             <button
               type="submit"
-              className="gold-btn px-4 py-2 rounded-xl text-xs uppercase tracking-wider"
+              className="gold-btn px-4 py-2 rounded-xl text-xs uppercase tracking-wider font-bold"
             >
               Track
             </button>
@@ -172,10 +173,10 @@ export default function LiveQueuePage() {
               <button
                 key={b.id}
                 onClick={() => setSelectedBookingId(b.id)}
-                className={`px-3 py-1.5 rounded-lg text-xs font-medium border shrink-0 transition-colors ${
+                className={`px-3 py-1.5 rounded-xl text-xs font-medium border shrink-0 transition-all ${
                   selectedBookingId === b.id
-                    ? "bg-gold text-black border-gold font-bold"
-                    : "bg-[#141418] text-[#A1A1AA] border-white/[0.08] hover:text-white"
+                    ? "bg-gold text-black border-gold font-bold shadow-gold"
+                    : "bg-[#121217] text-[#A1A1AA] border-white/[0.08] hover:text-white"
                 }`}
               >
                 Token #{b.queueTokenNumber} • {b.salonName}
@@ -187,16 +188,16 @@ export default function LiveQueuePage() {
         {/* MAIN LIVE QUEUE DISPLAY CARD */}
         {activeBooking ? (
           <div className="relative">
-            <div className="bg-[#141418] rounded-3xl border border-white/[0.1] p-6 sm:p-10 shadow-2xl space-y-8">
+            <div className="bg-[#121217]/95 rounded-3xl border border-white/[0.1] p-6 sm:p-10 shadow-[0_20px_60px_rgba(0,0,0,0.85)] backdrop-blur-2xl space-y-8">
               {/* Top Atelier info bar */}
               <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-white/[0.08] gap-4">
                 <div className="space-y-1">
                   <div className="flex items-center space-x-2">
-                    <span className="text-xs uppercase font-semibold text-gold">
+                    <span className="text-xs uppercase font-semibold text-gold tracking-wider">
                       Digital Boarding Pass
                     </span>
                     <span className="text-[#71717A]">•</span>
-                    <span className="text-xs font-mono text-white">
+                    <span className="text-xs font-mono text-white bg-white/[0.06] px-2 py-0.5 rounded-md">
                       ID: {activeBooking.bookingCode}
                     </span>
                   </div>
@@ -204,7 +205,7 @@ export default function LiveQueuePage() {
                     {activeBooking.salonName}
                   </h2>
                   <p className="text-xs text-[#A1A1AA] flex items-center">
-                    <MapPin className="w-3.5 h-3.5 text-gold mr-1" />
+                    <MapPin className="w-3.5 h-3.5 text-gold mr-1.5" />
                     {activeBooking.salonAddress}
                   </p>
                 </div>
@@ -214,8 +215,8 @@ export default function LiveQueuePage() {
                     onClick={() => setNotificationTurnOn(!notificationTurnOn)}
                     className={`px-3.5 py-2 rounded-xl text-xs font-semibold flex items-center space-x-2 border transition-all ${
                       notificationTurnOn
-                        ? "bg-green-500/15 border-green-500/40 text-green-400"
-                        : "bg-[#0B0B0D] border-white/[0.08] text-[#A1A1AA] hover:text-white"
+                        ? "bg-green-500/15 border-green-500/40 text-green-400 shadow-[0_0_15px_rgba(74,222,128,0.2)]"
+                        : "bg-[#08080B] border-white/[0.08] text-[#A1A1AA] hover:text-white"
                     }`}
                   >
                     <Bell className="w-3.5 h-3.5" />
@@ -227,7 +228,7 @@ export default function LiveQueuePage() {
               {/* CORE METRICS GRID */}
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 {/* YOUR TOKEN */}
-                <div className="bg-[#0B0B0D] p-5 rounded-2xl border border-gold/40 text-center relative overflow-hidden shadow-gold">
+                <div className="bg-[#08080B] p-5 rounded-2xl border border-gold/50 text-center relative overflow-hidden shadow-gold">
                   <div className="absolute top-0 right-0 w-8 h-8 bg-gold/15 rounded-bl-xl flex items-center justify-center">
                     <Ticket className="w-4 h-4 text-gold" />
                   </div>
@@ -237,13 +238,13 @@ export default function LiveQueuePage() {
                   <p className="text-5xl font-black text-gold mt-2">
                     #{yourToken < 10 ? `0${yourToken}` : yourToken}
                   </p>
-                  <p className="text-[10px] text-[#71717A] mt-2">
+                  <p className="text-[10px] text-[#71717A] mt-2 font-medium">
                     {activeBooking.customerName}
                   </p>
                 </div>
 
                 {/* NOW SERVING */}
-                <div className="bg-[#0B0B0D] p-5 rounded-2xl border border-white/[0.06] text-center">
+                <div className="bg-[#08080B] p-5 rounded-2xl border border-white/[0.08] text-center">
                   <p className="text-[10px] uppercase tracking-wider font-semibold text-[#71717A]">
                     NOW SERVING
                   </p>
@@ -256,20 +257,20 @@ export default function LiveQueuePage() {
                 </div>
 
                 {/* CUSTOMERS AHEAD */}
-                <div className="bg-[#0B0B0D] p-5 rounded-2xl border border-white/[0.06] text-center">
+                <div className="bg-[#08080B] p-5 rounded-2xl border border-white/[0.08] text-center">
                   <p className="text-[10px] uppercase tracking-wider font-semibold text-[#71717A]">
                     CUSTOMERS AHEAD
                   </p>
                   <p className="text-5xl font-black text-white mt-2">
                     {activeBooking.status === "in_service" ? "0" : customersAhead}
                   </p>
-                  <p className="text-[10px] text-[#71717A] mt-2">
+                  <p className="text-[10px] text-[#71717A] mt-2 font-medium">
                     {customersAhead === 0 ? "You're Next in Chair!" : "Moving Steadily"}
                   </p>
                 </div>
 
                 {/* ESTIMATED WAITING TIME */}
-                <div className="bg-[#0B0B0D] p-5 rounded-2xl border border-white/[0.06] text-center">
+                <div className="bg-[#08080B] p-5 rounded-2xl border border-white/[0.08] text-center">
                   <p className="text-[10px] uppercase tracking-wider font-semibold text-[#71717A]">
                     ESTIMATED WAIT
                   </p>
@@ -284,7 +285,7 @@ export default function LiveQueuePage() {
               </div>
 
               {/* 4-STAGE QUEUE PROGRESSION STEPS */}
-              <div className="bg-[#0B0B0D] rounded-2xl p-5 border border-white/[0.06] space-y-4">
+              <div className="bg-[#08080B] rounded-2xl p-5 border border-white/[0.08] space-y-4">
                 <div className="flex justify-between items-center text-xs">
                   <span className="text-[#71717A] font-semibold uppercase tracking-wider text-[10px]">
                     Live Seating Progression
@@ -293,49 +294,49 @@ export default function LiveQueuePage() {
                 </div>
 
                 {/* Multi-step track */}
-                <div className="grid grid-cols-4 gap-2 text-center text-xs">
+                <div className="grid grid-cols-4 gap-2.5 text-center text-xs">
                   <div className="space-y-1.5">
-                    <div className="h-1.5 rounded-full bg-gold"></div>
+                    <div className="h-2 rounded-full bg-gold shadow-[0_0_8px_#D4AF37]" />
                     <p className="text-[10px] text-white font-medium">1. Registered</p>
                   </div>
                   <div className="space-y-1.5">
-                    <div className={`h-1.5 rounded-full ${customersAhead <= 2 ? "bg-gold" : "bg-white/[0.1]"}`}></div>
+                    <div className={`h-2 rounded-full transition-all ${customersAhead <= 2 ? "bg-gold shadow-[0_0_8px_#D4AF37]" : "bg-white/[0.08]"}`} />
                     <p className="text-[10px] text-[#A1A1AA]">2. In Line</p>
                   </div>
                   <div className="space-y-1.5">
-                    <div className={`h-1.5 rounded-full ${customersAhead === 0 || activeBooking.status === "in_service" ? "bg-gold" : "bg-white/[0.1]"}`}></div>
+                    <div className={`h-2 rounded-full transition-all ${customersAhead === 0 || activeBooking.status === "in_service" ? "bg-gold shadow-[0_0_8px_#D4AF37]" : "bg-white/[0.08]"}`} />
                     <p className="text-[10px] text-[#A1A1AA]">3. Next Up</p>
                   </div>
                   <div className="space-y-1.5">
-                    <div className={`h-1.5 rounded-full ${activeBooking.status === "in_service" ? "bg-green-500" : "bg-white/[0.1]"}`}></div>
+                    <div className={`h-2 rounded-full transition-all ${activeBooking.status === "in_service" ? "bg-green-500 shadow-[0_0_8px_#22c55e]" : "bg-white/[0.08]"}`} />
                     <p className="text-[10px] text-[#A1A1AA]">4. Seated in Chair</p>
                   </div>
                 </div>
               </div>
 
               {/* Service & Visit Breakdown */}
-              <div className="p-5 rounded-2xl bg-[#0B0B0D] border border-white/[0.06] grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
+              <div className="p-5 rounded-2xl bg-[#08080B] border border-white/[0.08] grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
                 <div>
-                  <span className="text-[#71717A] uppercase text-[10px] font-semibold">
+                  <span className="text-[#71717A] uppercase text-[10px] font-semibold tracking-wider">
                     Requested Services
                   </span>
-                  <p className="text-white font-bold mt-0.5">
+                  <p className="text-white font-bold mt-1">
                     {activeBooking.serviceNames.join(" + ")}
                   </p>
                 </div>
                 <div>
-                  <span className="text-[#71717A] uppercase text-[10px] font-semibold">
+                  <span className="text-[#71717A] uppercase text-[10px] font-semibold tracking-wider">
                     Expected Duration
                   </span>
-                  <p className="text-white font-bold mt-0.5">
+                  <p className="text-white font-bold mt-1">
                     {activeBooking.totalDurationMinutes} minutes
                   </p>
                 </div>
                 <div>
-                  <span className="text-[#71717A] uppercase text-[10px] font-semibold">
+                  <span className="text-[#71717A] uppercase text-[10px] font-semibold tracking-wider">
                     Total Amount
                   </span>
-                  <p className="text-gold font-black text-sm mt-0.5">
+                  <p className="text-gold font-black text-sm mt-1">
                     ₹{activeBooking.totalAmount}
                   </p>
                 </div>
@@ -358,14 +359,14 @@ export default function LiveQueuePage() {
                 <div className="flex items-center space-x-3">
                   <button
                     onClick={handleSimulateAdvance}
-                    className="px-4 py-2 rounded-xl bg-[#0B0B0D] border border-gold text-gold hover:bg-gold/10 text-xs font-semibold flex items-center space-x-1.5 transition-colors"
+                    className="px-4 py-2 rounded-xl bg-[#08080B] border border-gold text-gold hover:bg-gold/10 text-xs font-semibold flex items-center space-x-1.5 transition-colors shadow-sm"
                   >
                     <Play className="w-3.5 h-3.5" />
                     <span>Advance Queue (Simulate)</span>
                   </button>
                   <Link
                     href="/owner"
-                    className="gold-btn px-4 py-2 rounded-xl text-xs uppercase tracking-wider"
+                    className="gold-btn px-4 py-2 rounded-xl text-xs uppercase tracking-wider font-bold"
                   >
                     Open Owner Dashboard
                   </Link>
@@ -374,7 +375,7 @@ export default function LiveQueuePage() {
             </div>
           </div>
         ) : (
-          <div className="bg-[#141418] rounded-2xl border border-white/[0.08] p-12 text-center space-y-4">
+          <div className="bg-[#121217] rounded-3xl border border-white/[0.08] p-12 text-center space-y-4">
             <Ticket className="w-12 h-12 text-[#71717A] mx-auto" />
             <h3 className="text-lg font-bold text-white">No active queue token found</h3>
             <p className="text-xs text-[#71717A] max-w-sm mx-auto">
@@ -382,7 +383,7 @@ export default function LiveQueuePage() {
             </p>
             <Link
               href="/book"
-              className="gold-btn inline-block px-6 py-3 rounded-xl text-xs uppercase tracking-wider"
+              className="gold-btn inline-block px-6 py-3 rounded-xl text-xs uppercase tracking-wider font-bold"
             >
               Book / Join Queue
             </Link>

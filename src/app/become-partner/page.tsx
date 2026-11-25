@@ -34,7 +34,7 @@ export default function BecomePartnerPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0B0B0D] py-12 pb-28">
+    <div className="min-h-screen bg-[#08080B] py-12 pb-28">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 space-y-12">
         {/* Hero title */}
         <div className="text-center space-y-4">
@@ -104,7 +104,7 @@ export default function BecomePartnerPage() {
                 </Link>
                 <Link
                   href="/"
-                  className="px-5 py-2.5 rounded-xl bg-[#0B0B0D] text-white border border-charcoal-border text-xs font-semibold"
+                  className="px-5 py-2.5 rounded-xl bg-[#08080B] text-white border border-charcoal-border text-xs font-semibold"
                 >
                   Return to Home
                 </Link>
@@ -128,7 +128,7 @@ export default function BecomePartnerPage() {
                     placeholder="e.g. Monte Carlo Barber Club"
                     value={salonName}
                     onChange={(e) => setSalonName(e.target.value)}
-                    className="w-full bg-[#0B0B0D] border border-charcoal-border rounded-xl px-3.5 py-2.5 text-white focus:outline-none focus:border-gold"
+                    className="w-full bg-[#08080B] border border-charcoal-border rounded-xl px-3.5 py-2.5 text-white focus:outline-none focus:border-gold"
                   />
                 </div>
 
@@ -140,7 +140,7 @@ export default function BecomePartnerPage() {
                     placeholder="e.g. David Vance"
                     value={ownerName}
                     onChange={(e) => setOwnerName(e.target.value)}
-                    className="w-full bg-[#0B0B0D] border border-charcoal-border rounded-xl px-3.5 py-2.5 text-white focus:outline-none focus:border-gold"
+                    className="w-full bg-[#08080B] border border-charcoal-border rounded-xl px-3.5 py-2.5 text-white focus:outline-none focus:border-gold"
                   />
                 </div>
 
@@ -149,7 +149,7 @@ export default function BecomePartnerPage() {
                   <select
                     value={city}
                     onChange={(e) => setCity(e.target.value)}
-                    className="w-full bg-[#0B0B0D] border border-charcoal-border rounded-xl px-3.5 py-2.5 text-white focus:outline-none focus:border-gold"
+                    className="w-full bg-[#08080B] border border-charcoal-border rounded-xl px-3.5 py-2.5 text-white focus:outline-none focus:border-gold"
                   >
                     <option value="Mumbai">Mumbai</option>
                     <option value="Bengaluru">Bengaluru</option>
@@ -167,7 +167,7 @@ export default function BecomePartnerPage() {
                     placeholder="e.g. Bandra West, Indiranagar"
                     value={area}
                     onChange={(e) => setArea(e.target.value)}
-                    className="w-full bg-[#0B0B0D] border border-charcoal-border rounded-xl px-3.5 py-2.5 text-white focus:outline-none focus:border-gold"
+                    className="w-full bg-[#08080B] border border-charcoal-border rounded-xl px-3.5 py-2.5 text-white focus:outline-none focus:border-gold"
                   />
                 </div>
 
@@ -179,7 +179,7 @@ export default function BecomePartnerPage() {
                     placeholder="+91 98000 11223"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
-                    className="w-full bg-[#0B0B0D] border border-charcoal-border rounded-xl px-3.5 py-2.5 text-white focus:outline-none focus:border-gold"
+                    className="w-full bg-[#08080B] border border-charcoal-border rounded-xl px-3.5 py-2.5 text-white focus:outline-none focus:border-gold"
                   />
                 </div>
 
@@ -191,7 +191,7 @@ export default function BecomePartnerPage() {
                     placeholder="partner@salon.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full bg-[#0B0B0D] border border-charcoal-border rounded-xl px-3.5 py-2.5 text-white focus:outline-none focus:border-gold"
+                    className="w-full bg-[#08080B] border border-charcoal-border rounded-xl px-3.5 py-2.5 text-white focus:outline-none focus:border-gold"
                   />
                 </div>
 
@@ -202,7 +202,7 @@ export default function BecomePartnerPage() {
                     placeholder="e.g. Bespoke British Men's Grooming & Classic Shaving"
                     value={tagline}
                     onChange={(e) => setTagline(e.target.value)}
-                    className="w-full bg-[#0B0B0D] border border-charcoal-border rounded-xl px-3.5 py-2.5 text-white focus:outline-none focus:border-gold"
+                    className="w-full bg-[#08080B] border border-charcoal-border rounded-xl px-3.5 py-2.5 text-white focus:outline-none focus:border-gold"
                   />
                 </div>
               </div>

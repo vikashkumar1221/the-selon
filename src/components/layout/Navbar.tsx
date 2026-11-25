@@ -31,13 +31,13 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-[#0B0B0D]/85 backdrop-blur-xl border-b border-white/[0.08] transition-all">
+    <header className="sticky top-0 z-50 w-full bg-[#08080B]/85 backdrop-blur-2xl border-b border-white/[0.08] shadow-[0_4px_30px_rgba(0,0,0,0.6)] transition-all">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-3.5 group">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#D4AF37] via-[#F3E5AB] to-[#BFA15F] p-[1px] shadow-gold transition-transform group-hover:scale-105">
-              <div className="w-full h-full bg-[#0B0B0D] rounded-xl flex items-center justify-center">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#D4AF37] via-[#F3E5AB] to-[#BFA15F] p-[1px] shadow-gold transition-all duration-300 group-hover:scale-105 group-hover:shadow-[0_0_20px_rgba(212,175,55,0.4)]">
+              <div className="w-full h-full bg-[#08080B] rounded-xl flex items-center justify-center">
                 <Scissors className="w-5 h-5 text-gold group-hover:rotate-12 transition-transform duration-300" />
               </div>
             </div>
@@ -45,7 +45,7 @@ export default function Navbar() {
               <span className="text-xl font-bold tracking-wider text-white">
                 SALON<span className="text-gold">X</span>
               </span>
-              <span className="text-[9px] uppercase tracking-[0.25em] text-[#71717A] -mt-1 font-semibold">
+              <span className="text-[9px] uppercase tracking-[0.25em] text-[#A1A1AA] -mt-1 font-semibold">
                 Luxury Ateliers & Queue
               </span>
             </div>
@@ -59,7 +59,7 @@ export default function Navbar() {
                 <Link
                   key={link.name}
                   href={link.href}
-                  className={`text-sm tracking-wide transition-all relative py-1 ${
+                  className={`text-sm tracking-wide transition-all relative py-1.5 ${
                     isActive
                       ? "text-gold font-semibold"
                       : "text-[#A1A1AA] hover:text-white"
@@ -67,7 +67,7 @@ export default function Navbar() {
                 >
                   {link.name}
                   {isActive && (
-                    <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-gold to-transparent rounded-full" />
+                    <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-gold to-transparent rounded-full shadow-[0_0_8px_#D4AF37]" />
                   )}
                 </Link>
               );
@@ -80,9 +80,10 @@ export default function Navbar() {
             <div className="relative">
               <button
                 onClick={() => setRoleDropdownOpen(!roleDropdownOpen)}
-                className="flex items-center space-x-2 px-3 py-1.5 rounded-lg bg-[#141418] border border-white/[0.08] text-xs text-[#A1A1AA] hover:text-white hover:border-gold/50 transition-all"
+                className="flex items-center space-x-2 px-3 py-1.5 rounded-xl bg-[#121217] border border-white/[0.08] text-xs text-[#A1A1AA] hover:text-white hover:border-gold/50 transition-all shadow-sm"
                 title="Switch persona"
               >
+                <span className="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_6px_#34d399]" />
                 <span className="text-[10px] uppercase font-bold text-gold tracking-wider">
                   Role:
                 </span>
@@ -93,7 +94,7 @@ export default function Navbar() {
               </button>
 
               {roleDropdownOpen && (
-                <div className="absolute right-0 mt-2 w-56 rounded-xl bg-[#141418] border border-white/[0.12] shadow-2xl py-2 z-50 backdrop-blur-xl">
+                <div className="absolute right-0 mt-2 w-60 rounded-2xl bg-[#121217] border border-white/[0.12] shadow-2xl py-2 z-50 backdrop-blur-2xl">
                   <div className="px-3.5 py-1.5 border-b border-white/[0.06] text-[10px] text-[#71717A] uppercase font-semibold tracking-wider">
                     Switch Test View
                   </div>
@@ -105,7 +106,7 @@ export default function Navbar() {
                     className={`w-full px-3.5 py-2.5 text-left text-xs flex items-center space-x-2.5 transition-colors ${
                       currentUser.role === "customer"
                         ? "bg-gold/10 text-gold font-semibold"
-                        : "text-[#A1A1AA] hover:bg-[#1E1E24] hover:text-white"
+                        : "text-[#A1A1AA] hover:bg-[#1A1A22] hover:text-white"
                     }`}
                   >
                     <User className="w-4 h-4 text-gold" />
@@ -122,7 +123,7 @@ export default function Navbar() {
                     className={`w-full px-3.5 py-2.5 text-left text-xs flex items-center space-x-2.5 transition-colors ${
                       currentUser.role === "salon_owner"
                         ? "bg-gold/10 text-gold font-semibold"
-                        : "text-[#A1A1AA] hover:bg-[#1E1E24] hover:text-white"
+                        : "text-[#A1A1AA] hover:bg-[#1A1A22] hover:text-white"
                     }`}
                   >
                     <Store className="w-4 h-4 text-gold" />
@@ -139,7 +140,7 @@ export default function Navbar() {
                     className={`w-full px-3.5 py-2.5 text-left text-xs flex items-center space-x-2.5 transition-colors ${
                       currentUser.role === "admin"
                         ? "bg-gold/10 text-gold font-semibold"
-                        : "text-[#A1A1AA] hover:bg-[#1E1E24] hover:text-white"
+                        : "text-[#A1A1AA] hover:bg-[#1A1A22] hover:text-white"
                     }`}
                   >
                     <Shield className="w-4 h-4 text-gold" />
@@ -156,7 +157,7 @@ export default function Navbar() {
             {currentUser.role === "customer" && (
               <Link
                 href="/customer"
-                className="text-xs text-[#A1A1AA] hover:text-white px-2 py-1 transition-colors"
+                className="text-xs text-[#A1A1AA] hover:text-white px-2.5 py-1.5 rounded-lg hover:bg-white/[0.04] transition-colors"
               >
                 My Bookings
               </Link>
@@ -164,7 +165,7 @@ export default function Navbar() {
             {currentUser.role === "salon_owner" && (
               <Link
                 href="/owner"
-                className="text-xs text-gold border border-gold/40 px-2.5 py-1.5 rounded-lg hover:bg-gold/10 transition-colors flex items-center space-x-1.5"
+                className="text-xs text-gold border border-gold/40 px-3 py-1.5 rounded-xl hover:bg-gold/10 transition-colors flex items-center space-x-1.5 shadow-sm"
               >
                 <Store className="w-3.5 h-3.5" />
                 <span>Owner Portal</span>
@@ -173,7 +174,7 @@ export default function Navbar() {
             {currentUser.role === "admin" && (
               <Link
                 href="/admin"
-                className="text-xs text-gold border border-gold/40 px-2.5 py-1.5 rounded-lg hover:bg-gold/10 transition-colors flex items-center space-x-1.5"
+                className="text-xs text-gold border border-gold/40 px-3 py-1.5 rounded-xl hover:bg-gold/10 transition-colors flex items-center space-x-1.5 shadow-sm"
               >
                 <Shield className="w-3.5 h-3.5" />
                 <span>Super Admin</span>
@@ -183,9 +184,9 @@ export default function Navbar() {
             {/* Book Now Primary Button */}
             <Link
               href="/book"
-              className="gold-btn px-5 py-2.5 rounded-lg text-xs uppercase tracking-wider flex items-center shadow-gold"
+              className="gold-btn px-5 py-2.5 rounded-xl text-xs uppercase tracking-wider flex items-center shadow-gold group"
             >
-              <Sparkles className="w-3.5 h-3.5 mr-1.5" />
+              <Sparkles className="w-3.5 h-3.5 mr-1.5 text-black group-hover:rotate-12 transition-transform" />
               Book Appointment
             </Link>
           </div>
@@ -194,13 +195,13 @@ export default function Navbar() {
           <div className="flex md:hidden items-center space-x-2">
             <Link
               href="/book"
-              className="gold-btn text-xs px-3.5 py-1.5 rounded-lg font-bold uppercase"
+              className="gold-btn text-xs px-3.5 py-2 rounded-xl font-bold uppercase"
             >
               Book
             </Link>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg bg-[#141418] border border-white/[0.08] text-white"
+              className="p-2 rounded-xl bg-[#121217] border border-white/[0.08] text-white hover:border-gold/40 transition-colors"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
@@ -210,14 +211,14 @@ export default function Navbar() {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-[#0E0E12] border-b border-white/[0.08] px-4 pt-3 pb-6 space-y-4">
+        <div className="md:hidden bg-[#0C0C10] border-b border-white/[0.08] px-4 pt-3 pb-6 space-y-4 shadow-2xl backdrop-blur-2xl">
           <div className="space-y-1">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="block px-3 py-2 text-sm text-[#A1A1AA] hover:text-gold hover:bg-[#17171C] rounded-lg"
+                className="block px-3 py-2 text-sm text-[#A1A1AA] hover:text-gold hover:bg-[#16161E] rounded-xl transition-colors"
               >
                 {link.name}
               </Link>
@@ -234,7 +235,7 @@ export default function Navbar() {
                   switchUser("usr_customer_1");
                   setMobileMenuOpen(false);
                 }}
-                className={`py-2 text-[11px] rounded-lg border text-center font-medium ${
+                className={`py-2 text-[11px] rounded-xl border text-center font-medium transition-colors ${
                   currentUser.role === "customer"
                     ? "border-gold text-gold bg-gold/10"
                     : "border-white/[0.08] text-[#A1A1AA]"
@@ -247,7 +248,7 @@ export default function Navbar() {
                   switchUser("usr_owner_1");
                   setMobileMenuOpen(false);
                 }}
-                className={`py-2 text-[11px] rounded-lg border text-center font-medium ${
+                className={`py-2 text-[11px] rounded-xl border text-center font-medium transition-colors ${
                   currentUser.role === "salon_owner"
                     ? "border-gold text-gold bg-gold/10"
                     : "border-white/[0.08] text-[#A1A1AA]"
@@ -260,7 +261,7 @@ export default function Navbar() {
                   switchUser("usr_admin_1");
                   setMobileMenuOpen(false);
                 }}
-                className={`py-2 text-[11px] rounded-lg border text-center font-medium ${
+                className={`py-2 text-[11px] rounded-xl border text-center font-medium transition-colors ${
                   currentUser.role === "admin"
                     ? "border-gold text-gold bg-gold/10"
                     : "border-white/[0.08] text-[#A1A1AA]"
@@ -275,21 +276,21 @@ export default function Navbar() {
             <Link
               href="/owner"
               onClick={() => setMobileMenuOpen(false)}
-              className="text-xs text-center py-2 text-gold border border-gold/30 rounded-lg"
+              className="text-xs text-center py-2.5 text-gold border border-gold/30 rounded-xl hover:bg-gold/10 transition-colors"
             >
               Salon Owner Portal
             </Link>
             <Link
               href="/admin"
               onClick={() => setMobileMenuOpen(false)}
-              className="text-xs text-center py-2 text-[#A1A1AA] border border-white/[0.08] rounded-lg"
+              className="text-xs text-center py-2.5 text-[#A1A1AA] border border-white/[0.08] rounded-xl hover:text-white transition-colors"
             >
               Super Admin Console
             </Link>
             <Link
               href="/become-partner"
               onClick={() => setMobileMenuOpen(false)}
-              className="text-xs text-center py-2 text-white bg-[#17171C] rounded-lg"
+              className="text-xs text-center py-2.5 text-white bg-[#16161E] border border-white/[0.06] rounded-xl hover:border-gold/30 transition-colors"
             >
               Become a Partner
             </Link>

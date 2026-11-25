@@ -88,7 +88,7 @@ function SalonsContent() {
   ]);
 
   return (
-    <div className="min-h-screen bg-[#0B0B0D] py-10 pb-24">
+    <div className="min-h-screen bg-[#08080B] py-10 pb-28 text-[#F4F4F5]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header Breadcrumbs */}
         <div className="flex items-center space-x-2 text-xs text-[#71717A] mb-4">
@@ -114,7 +114,7 @@ function SalonsContent() {
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value as any)}
-              className="bg-[#141418] border border-white/[0.08] rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-gold"
+              className="bg-[#121217] border border-white/[0.1] rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-gold transition-colors"
             >
               <option value="rating">Highest Rating</option>
               <option value="price">Price: Low to High</option>
@@ -125,17 +125,17 @@ function SalonsContent() {
 
         {/* Quick City Filter Bar */}
         <div className="flex items-center gap-2 overflow-x-auto py-4 border-b border-white/[0.06]">
-          <span className="text-[11px] uppercase font-semibold text-[#71717A] shrink-0 mr-1">
+          <span className="text-[11px] uppercase font-semibold text-[#71717A] shrink-0 mr-1 tracking-wider">
             Cities:
           </span>
           {cities.map((city) => (
             <button
               key={city}
               onClick={() => setSelectedCity(city)}
-              className={`text-xs px-3.5 py-1.5 rounded-lg border transition-all shrink-0 font-medium ${
+              className={`text-xs px-3.5 py-1.5 rounded-xl border transition-all shrink-0 font-medium ${
                 selectedCity === city
                   ? "bg-gold text-black border-gold font-bold shadow-gold"
-                  : "bg-[#141418] text-[#A1A1AA] border-white/[0.08] hover:border-gold/30 hover:text-white"
+                  : "bg-[#121217] text-[#A1A1AA] border-white/[0.08] hover:border-gold/30 hover:text-white"
               }`}
             >
               {city}
@@ -147,7 +147,7 @@ function SalonsContent() {
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 pt-8">
           {/* Filters Sidebar */}
           <div className="lg:col-span-1 space-y-6">
-            <div className="bg-[#141418] p-5 rounded-2xl border border-white/[0.08] space-y-6 shadow-xl">
+            <div className="bg-[#121217]/95 p-5 rounded-2xl border border-white/[0.09] space-y-6 shadow-xl backdrop-blur-xl">
               <div className="flex items-center justify-between pb-3 border-b border-white/[0.06]">
                 <span className="text-xs font-bold uppercase tracking-wider text-white flex items-center">
                   <SlidersHorizontal className="w-3.5 h-3.5 mr-2 text-gold" />
@@ -161,7 +161,7 @@ function SalonsContent() {
                     setMinRating(0);
                     setMaxPrice(5000);
                   }}
-                  className="text-[11px] text-gold hover:underline"
+                  className="text-[11px] text-gold hover:underline font-medium"
                 >
                   Reset
                 </button>
@@ -169,14 +169,14 @@ function SalonsContent() {
 
               {/* Keyword Search */}
               <div className="space-y-2">
-                <label className="text-xs font-semibold text-[#71717A]">Keyword / Area</label>
+                <label className="text-xs font-semibold text-[#A1A1AA]">Keyword / Area</label>
                 <div className="relative">
                   <input
                     type="text"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     placeholder="Search salon or service..."
-                    className="w-full bg-[#0B0B0D] border border-white/[0.08] rounded-xl pl-9 pr-3 py-2 text-xs text-white focus:outline-none focus:border-gold"
+                    className="w-full bg-[#08080B] border border-white/[0.1] rounded-xl pl-9 pr-3 py-2 text-xs text-white focus:outline-none focus:border-gold placeholder-[#71717A] transition-colors"
                   />
                   <Search className="w-4 h-4 text-[#71717A] absolute left-3 top-2.5" />
                 </div>
@@ -184,16 +184,16 @@ function SalonsContent() {
 
               {/* Service Categories */}
               <div className="space-y-2">
-                <label className="text-xs font-semibold text-[#71717A]">Service Category</label>
+                <label className="text-xs font-semibold text-[#A1A1AA]">Service Category</label>
                 <div className="space-y-1">
                   {categories.map((cat) => (
                     <button
                       key={cat}
                       onClick={() => setSelectedCategory(cat)}
-                      className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-xs transition-colors ${
+                      className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs transition-colors ${
                         selectedCategory === cat
                           ? "bg-gold/15 text-gold font-semibold border border-gold/30"
-                          : "text-[#A1A1AA] hover:bg-[#0B0B0D] hover:text-white"
+                          : "text-[#A1A1AA] hover:bg-[#08080B] hover:text-white"
                       }`}
                     >
                       <span>{cat}</span>
@@ -206,7 +206,7 @@ function SalonsContent() {
               {/* Min Rating */}
               <div className="space-y-2">
                 <div className="flex justify-between text-xs">
-                  <span className="font-semibold text-[#71717A]">Minimum Rating</span>
+                  <span className="font-semibold text-[#A1A1AA]">Minimum Rating</span>
                   <span className="text-gold font-bold">{minRating > 0 ? `${minRating}+ Stars` : "Any"}</span>
                 </div>
                 <div className="flex gap-2">
@@ -214,10 +214,10 @@ function SalonsContent() {
                     <button
                       key={rate}
                       onClick={() => setMinRating(rate)}
-                      className={`flex-1 py-1.5 rounded-lg text-[11px] border font-medium ${
+                      className={`flex-1 py-1.5 rounded-xl text-[11px] border font-medium transition-all ${
                         minRating === rate
-                          ? "bg-gold text-black border-gold font-bold"
-                          : "bg-[#0B0B0D] text-[#A1A1AA] border-white/[0.08]"
+                          ? "bg-gold text-black border-gold font-bold shadow-gold"
+                          : "bg-[#08080B] text-[#A1A1AA] border-white/[0.08]"
                       }`}
                     >
                       {rate === 0 ? "All" : `${rate}+`}
@@ -229,7 +229,7 @@ function SalonsContent() {
               {/* Max Price Range */}
               <div className="space-y-2">
                 <div className="flex justify-between text-xs">
-                  <span className="font-semibold text-[#71717A]">Max Starting Price</span>
+                  <span className="font-semibold text-[#A1A1AA]">Max Starting Price</span>
                   <span className="text-white font-bold">₹{maxPrice}</span>
                 </div>
                 <input
@@ -248,7 +248,7 @@ function SalonsContent() {
           {/* Salons Result Column */}
           <div className="lg:col-span-3 space-y-6">
             {filteredSalons.length === 0 ? (
-              <div className="bg-[#141418] rounded-2xl border border-white/[0.08] p-12 text-center space-y-4">
+              <div className="bg-[#121217] rounded-3xl border border-white/[0.08] p-12 text-center space-y-4">
                 <Scissors className="w-12 h-12 text-[#71717A] mx-auto" />
                 <h3 className="text-lg font-bold text-white">No salons match your filters</h3>
                 <p className="text-xs text-[#71717A] max-w-sm mx-auto">
@@ -260,7 +260,7 @@ function SalonsContent() {
                     setSelectedCategory("All");
                     setSearchQuery("");
                   }}
-                  className="gold-btn px-4 py-2 text-xs rounded-lg uppercase"
+                  className="gold-btn px-4 py-2 text-xs rounded-xl uppercase font-bold"
                 >
                   Clear Filters
                 </button>
@@ -269,7 +269,7 @@ function SalonsContent() {
               filteredSalons.map((salon) => (
                 <div
                   key={salon.id}
-                  className="luxury-card rounded-2xl p-5 sm:p-6 flex flex-col md:flex-row gap-6 group shadow-lg"
+                  className="luxury-card rounded-2xl p-5 sm:p-6 flex flex-col md:flex-row gap-6 group shadow-lg border border-white/[0.08] hover:border-gold/40"
                 >
                   {/* Salon Thumbnail */}
                   <div className="relative w-full md:w-64 h-48 md:h-auto rounded-xl overflow-hidden shrink-0">
@@ -279,7 +279,7 @@ function SalonsContent() {
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-                    <div className="absolute top-2 left-2 px-2 py-0.5 rounded-md bg-[#0B0B0D]/90 border border-white/[0.08] text-[10px] text-green-400 font-semibold">
+                    <div className="absolute top-2.5 left-2.5 px-2.5 py-1 rounded-md bg-[#08080B]/90 border border-white/[0.08] text-[10px] text-green-400 font-semibold backdrop-blur-md">
                       Now #{salon.currentServingToken}
                     </div>
                   </div>
@@ -300,13 +300,13 @@ function SalonsContent() {
                             )}
                           </div>
                           <p className="text-xs text-[#A1A1AA] flex items-center mt-1">
-                            <MapPin className="w-3.5 h-3.5 text-gold mr-1 shrink-0" />
+                            <MapPin className="w-3.5 h-3.5 text-gold mr-1.5 shrink-0" />
                             {salon.address}, {salon.city}
                           </p>
                         </div>
 
                         {/* Rating */}
-                        <div className="flex items-center space-x-1 px-2.5 py-1 rounded-lg bg-[#0B0B0D] border border-white/[0.08] text-xs">
+                        <div className="flex items-center space-x-1 px-2.5 py-1 rounded-xl bg-[#08080B] border border-white/[0.08] text-xs">
                           <Star className="w-3.5 h-3.5 text-gold fill-gold" />
                           <span className="font-bold text-white">{salon.rating}</span>
                           <span className="text-[#71717A]">({salon.reviewCount})</span>
@@ -328,9 +328,9 @@ function SalonsContent() {
                           {salon.staff.map((stf) => (
                             <div
                               key={stf.id}
-                              className="text-[11px] px-2 py-0.5 rounded bg-[#0B0B0D] text-white border border-white/[0.06] flex items-center space-x-1"
+                              className="text-[11px] px-2 py-0.5 rounded-lg bg-[#08080B] text-white border border-white/[0.06] flex items-center space-x-1"
                             >
-                              <span className="w-1.5 h-1.5 rounded-full bg-green-500"></span>
+                              <span className="w-1.5 h-1.5 rounded-full bg-green-500" />
                               <span>{stf.name}</span>
                             </div>
                           ))}
@@ -359,13 +359,13 @@ function SalonsContent() {
                       <div className="flex items-center space-x-3">
                         <Link
                           href={`/salons/${salon.id}`}
-                          className="px-4 py-2 text-xs font-semibold text-white bg-[#0B0B0D] border border-white/[0.08] hover:border-gold rounded-xl transition-colors"
+                          className="px-4 py-2 text-xs font-semibold text-white bg-[#08080B] border border-white/[0.08] hover:border-gold rounded-xl transition-colors"
                         >
                           View Atelier
                         </Link>
                         <Link
                           href={`/book?salonId=${salon.id}`}
-                          className="gold-btn px-5 py-2 text-xs rounded-xl shadow-gold uppercase tracking-wider"
+                          className="gold-btn px-5 py-2 text-xs rounded-xl shadow-gold uppercase tracking-wider font-bold"
                         >
                           Book / Join Queue
                         </Link>
@@ -384,7 +384,7 @@ function SalonsContent() {
 
 export default function SalonsPage() {
   return (
-    <Suspense fallback={<div className="min-h-screen bg-[#0B0B0D] p-8 text-gold">Loading luxury salons...</div>}>
+    <Suspense fallback={<div className="min-h-screen bg-[#08080B] p-8 text-gold">Loading luxury salons...</div>}>
       <SalonsContent />
     </Suspense>
   );

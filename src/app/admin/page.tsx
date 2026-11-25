@@ -39,7 +39,7 @@ export default function SuperAdminDashboard() {
   const commissionEarned = Math.round((totalCalculatedRevenue * commissionRate) / 100);
 
   return (
-    <div className="min-h-screen bg-[#0B0B0D] py-10 pb-28">
+    <div className="min-h-screen bg-[#08080B] py-10 pb-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-charcoal-border/70 gap-4">
@@ -68,7 +68,7 @@ export default function SuperAdminDashboard() {
 
         {/* METRICS CARDS */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-          <div className="bg-[#141418] p-5 rounded-2xl border border-white/[0.08] shadow-lg">
+          <div className="bg-[#121217] p-5 rounded-2xl border border-white/[0.08] shadow-lg">
             <div className="flex items-center justify-between text-xs text-[#71717A]">
               <span>Active Salons</span>
               <Store className="w-4 h-4 text-gold" />
@@ -80,7 +80,7 @@ export default function SuperAdminDashboard() {
             </p>
           </div>
 
-          <div className="bg-[#141418] p-5 rounded-2xl border border-gold/40 shadow-gold">
+          <div className="bg-[#121217] p-5 rounded-2xl border border-gold/40 shadow-gold">
             <div className="flex items-center justify-between text-xs text-gold">
               <span>Platform Revenue</span>
               <DollarSign className="w-4 h-4 text-gold" />
@@ -91,7 +91,7 @@ export default function SuperAdminDashboard() {
             </p>
           </div>
 
-          <div className="bg-[#141418] p-5 rounded-2xl border border-white/[0.08] shadow-lg">
+          <div className="bg-[#121217] p-5 rounded-2xl border border-white/[0.08] shadow-lg">
             <div className="flex items-center justify-between text-xs text-[#71717A]">
               <span>Registered Clients</span>
               <Users className="w-4 h-4 text-gold" />
@@ -102,7 +102,7 @@ export default function SuperAdminDashboard() {
             <p className="text-[11px] text-green-400 mt-1">+142 this week</p>
           </div>
 
-          <div className="bg-[#141418] p-5 rounded-2xl border border-white/[0.08] shadow-lg">
+          <div className="bg-[#121217] p-5 rounded-2xl border border-white/[0.08] shadow-lg">
             <div className="flex items-center justify-between text-xs text-[#71717A]">
               <span>Total Bookings</span>
               <Sparkles className="w-4 h-4 text-gold" />
@@ -171,7 +171,7 @@ export default function SuperAdminDashboard() {
                 {pendingSalons.map((salon) => (
                   <div
                     key={salon.id}
-                    className="p-5 rounded-xl bg-[#0B0B0D] border border-gold/30 flex flex-col md:flex-row md:items-center justify-between gap-4"
+                    className="p-5 rounded-xl bg-[#08080B] border border-gold/30 flex flex-col md:flex-row md:items-center justify-between gap-4"
                   >
                     <div className="flex items-start space-x-4">
                       <div className="relative w-16 h-16 rounded-xl overflow-hidden shrink-0 border border-charcoal-border">
@@ -234,7 +234,7 @@ export default function SuperAdminDashboard() {
                 </thead>
                 <tbody className="divide-y divide-charcoal-border/40">
                   {activeSalons.map((s) => (
-                    <tr key={s.id} className="hover:bg-[#0B0B0D]/50 text-[#A1A1AA]">
+                    <tr key={s.id} className="hover:bg-[#08080B]/50 text-[#A1A1AA]">
                       <td className="py-3 px-3 text-white font-bold">{s.name}</td>
                       <td className="py-3 px-3">{s.area}, {s.city}</td>
                       <td className="py-3 px-3 text-gold font-bold">
@@ -266,7 +266,7 @@ export default function SuperAdminDashboard() {
               {MOCK_USERS.map((usr) => (
                 <div
                   key={usr.id}
-                  className="p-4 rounded-xl bg-[#0B0B0D] border border-charcoal-border flex items-center justify-between"
+                  className="p-4 rounded-xl bg-[#08080B] border border-charcoal-border flex items-center justify-between"
                 >
                   <div className="flex items-center space-x-3">
                     <div className="w-10 h-10 rounded-full bg-gold/20 flex items-center justify-center text-gold font-bold">
@@ -312,11 +312,11 @@ export default function SuperAdminDashboard() {
 
             <div className="pt-4 border-t border-charcoal-border space-y-3">
               <h4 className="text-xs font-bold text-white uppercase">Platform Gateway Mode</h4>
-              <div className="p-3 rounded-xl bg-[#0B0B0D] border border-charcoal-border flex items-center justify-between text-xs">
+              <div className="p-3 rounded-xl bg-[#08080B] border border-charcoal-border flex items-center justify-between text-xs">
                 <span>Supabase Live Realtime PubSub</span>
                 <span className="text-green-400 font-bold">Enabled (Active)</span>
               </div>
-              <div className="p-3 rounded-xl bg-[#0B0B0D] border border-charcoal-border flex items-center justify-between text-xs">
+              <div className="p-3 rounded-xl bg-[#08080B] border border-charcoal-border flex items-center justify-between text-xs">
                 <span>Atomic Token Concurrency Lock</span>
                 <span className="text-green-400 font-bold">Safe (Stored Procedure)</span>
               </div>
