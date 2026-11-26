@@ -20,7 +20,7 @@ import { useSalonStore } from "@/lib/store/salonStore";
 export default function Navbar() {
   const pathname = usePathname();
   const router = useRouter();
-  const { currentUser, switchUser } = useSalonStore();
+  const { currentUser, switchUser, backendStatus } = useSalonStore();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [roleDropdownOpen, setRoleDropdownOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
@@ -64,15 +64,15 @@ export default function Navbar() {
           {/* Integrated Header Search Bar (Desktop) */}
           <form
             onSubmit={handleSearchSubmit}
-            className="hidden md:flex items-center relative max-w-sm w-full mx-2"
+            className="hidden xl:flex items-center relative w-64 mx-1 shrink-0"
           >
-            <Search className="w-4 h-4 text-gold absolute left-3.5 pointer-events-none" />
+            <Search className="w-3.5 h-3.5 text-gold absolute left-3.5 pointer-events-none" />
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search salons, cuts, spas..."
-              className="w-full bg-[#121217] border border-white/[0.1] rounded-full pl-9 pr-16 py-2 text-xs text-white placeholder-[#71717A] focus:outline-none focus:border-gold transition-colors"
+              placeholder="Search salons, cuts..."
+              className="w-full bg-[#121217] border border-white/[0.1] rounded-full pl-9 pr-20 py-1.5 text-xs text-white placeholder-[#71717A] focus:outline-none focus:border-gold transition-colors"
             />
             <button
               type="submit"
@@ -83,7 +83,7 @@ export default function Navbar() {
           </form>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center space-x-6 shrink-0">
+          <nav className="hidden lg:flex items-center space-x-4 shrink-0">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
               return (
@@ -106,7 +106,29 @@ export default function Navbar() {
           </nav>
 
           {/* Right Action Controls: Role Switcher & Book CTA */}
-          <div className="hidden sm:flex items-center space-x-3 shrink-0">
+          <div className="hidden sm:flex items-center space-x-2 shrink-0">
+            {/* Live Backend Connection Indicator */}
+            <div
+              className="hidden md:flex items-center space-x-1.5 px-2.5 py-1.5 rounded-xl bg-[#121217] border border-white/[0.08] text-[10px] shadow-sm cursor-default shrink-0"
+              title={`Backend: ${backendStatus.driver} | Status: ${backendStatus.online ? "Connected" : "Local Sync"}`}
+            >
+              <span className="relative flex h-2 w-2">
+                <span
+                  className={`animate-ping absolute inline-flex h-full w-full rounded-full ${
+                    backendStatus.online ? "bg-emerald-400" : "bg-amber-400"
+                  } opacity-75`}
+                />
+                <span
+                  className={`relative inline-flex rounded-full h-2 w-2 ${
+                    backendStatus.online ? "bg-emerald-500" : "bg-amber-500"
+                  }`}
+                />
+              </span>
+              <span className="font-semibold text-white/80 whitespace-nowrap">
+                {backendStatus.isConfigured ? "Supabase Live" : "API Connected"}
+              </span>
+            </div>
+
             {/* Role Switcher Pill */}
             <div className="relative">
               <button

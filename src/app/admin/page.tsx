@@ -23,7 +23,15 @@ import { useSalonStore } from "@/lib/store/salonStore";
 import { MOCK_USERS } from "@/lib/data/mockData";
 
 export default function SuperAdminDashboard() {
-  const { salons, bookings, metrics, setSalonApproval, resetDemoData } = useSalonStore();
+  const {
+    salons,
+    bookings,
+    metrics,
+    setSalonApproval,
+    resetDemoData,
+    backendStatus,
+    refreshData,
+  } = useSalonStore();
 
   const [activeTab, setActiveTab] = useState<"salons" | "approvals" | "users" | "financials">("approvals");
   const [commissionRate, setCommissionRate] = useState(15);
@@ -57,6 +65,31 @@ export default function SuperAdminDashboard() {
           </div>
 
           <div className="flex items-center space-x-3">
+            <div className="flex items-center space-x-2 px-3 py-2 rounded-xl bg-[#121217] border border-white/[0.08] text-xs">
+              <span className="relative flex h-2 w-2">
+                <span
+                  className={`animate-ping absolute inline-flex h-full w-full rounded-full ${
+                    backendStatus.online ? "bg-emerald-400" : "bg-amber-400"
+                  } opacity-75`}
+                />
+                <span
+                  className={`relative inline-flex rounded-full h-2 w-2 ${
+                    backendStatus.online ? "bg-emerald-500" : "bg-amber-500"
+                  }`}
+                />
+              </span>
+              <span className="text-[#A1A1AA] font-medium">
+                {backendStatus.isConfigured ? "Supabase Live" : "API Engine Live"}
+              </span>
+            </div>
+
+            <button
+              onClick={refreshData}
+              className="px-3.5 py-2 rounded-xl bg-[#171719] border border-charcoal-border hover:border-gold text-xs text-[#A1A1AA] hover:text-white transition-colors"
+            >
+              Sync
+            </button>
+
             <button
               onClick={resetDemoData}
               className="px-4 py-2 rounded-xl bg-[#171719] border border-charcoal-border hover:border-gold text-xs text-[#A1A1AA] hover:text-white transition-colors"

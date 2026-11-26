@@ -304,7 +304,7 @@ export const MOCK_SALONS: Salon[] = [
         id: "srv_beard_grooming",
         salon_id: "salon_aura_maison",
         name: "Beard Grooming",
-        category: "Beard",
+        category: "Beard Trimming",
         description:
           "Beard trimming, shape up, razor edging, conditioning beard oil, and hot towel finish.",
         price: 600,

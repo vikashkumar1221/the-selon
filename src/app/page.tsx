@@ -13,6 +13,7 @@ import {
   Search,
 } from "lucide-react";
 import { useSalonStore } from "@/lib/store/salonStore";
+import { StickyCard002 } from "@/components/ui/sticky-card";
 
 export default function HomePage() {
   const { salons } = useSalonStore();
@@ -217,6 +218,59 @@ export default function HomePage() {
               </div>
             );
           })}
+        </div>
+      </section>
+
+      {/* 2.5 STICKY CARDS SHOWCASE - SKIPER UI GSAP SCROLLTRIGGER */}
+      <section className="py-20 bg-gradient-to-b from-[#08080B] via-[#0D0D12] to-[#08080B] relative overflow-hidden border-t border-white/[0.06]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-4 text-center space-y-3">
+          <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-gold/10 border border-gold/30 text-gold text-xs font-semibold">
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>Visual Craft & Ateliers</span>
+          </div>
+          <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight">
+            The Sello <span className="text-gold-gradient">Mastery Showcase</span>
+          </h2>
+          <p className="text-xs sm:text-sm text-[#A1A1AA] max-w-xl mx-auto">
+            Scroll down to experience the immersive artistry, precision shears, and bespoke luxury grooming environments.
+          </p>
+        </div>
+
+        <div className="w-full">
+          <StickyCard002
+            cards={[
+              {
+                id: "sc-1",
+                image: "https://images.unsplash.com/photo-1585747860715-2ba37e788b70?q=80&w=1200&auto=format&fit=crop",
+                title: "Vintage Italian Belmont Leather Chairs",
+                category: "Signature Atelier Ambiance",
+              },
+              {
+                id: "sc-2",
+                image: "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?q=80&w=1200&auto=format&fit=crop",
+                title: "Traditional Hot Lather Straight-Razor Shaving",
+                category: "Master Barbering",
+              },
+              {
+                id: "sc-3",
+                image: "https://images.unsplash.com/photo-1621605815971-fbc98d665033?q=80&w=1200&auto=format&fit=crop",
+                title: "Precision Scissor Fades & Texturing",
+                category: "Couture Hair Architecture",
+              },
+              {
+                id: "sc-4",
+                image: "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?q=80&w=1200&auto=format&fit=crop",
+                title: "Japanese Botanical Scalp & Head Spa",
+                category: "Holistic Wellness Sanctuary",
+              },
+              {
+                id: "sc-5",
+                image: "https://images.unsplash.com/photo-1599351431202-1e0f0137899a?q=80&w=1200&auto=format&fit=crop",
+                title: "Beard Sculpting & Hot Towel Finishing",
+                category: "Gentleman's Bespoke Grooming",
+              },
+            ]}
+          />
         </div>
       </section>
 

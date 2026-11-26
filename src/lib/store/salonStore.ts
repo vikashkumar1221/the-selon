@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { Salon, Booking, User, BookingStatus, PlatformMetric } from "@/types";
 import {
   MOCK_SALONS,
@@ -9,11 +9,12 @@ import {
   MOCK_PLATFORM_METRICS,
 } from "../data/mockData";
 import { calculateQueueWaitTime } from "../queue/waitTimeCalculator";
+import { apiClient } from "../api";
 
-const STORAGE_KEY_SALONS = "salonx_salons_v3";
-const STORAGE_KEY_BOOKINGS = "salonx_bookings_v3";
-const STORAGE_KEY_USER = "salonx_current_user_v3";
-const STORAGE_KEY_METRICS = "salonx_metrics_v3";
+const STORAGE_KEY_SALONS = "salonx_salons_v4";
+const STORAGE_KEY_BOOKINGS = "salonx_bookings_v4";
+const STORAGE_KEY_USER = "salonx_current_user_v4";
+const STORAGE_KEY_METRICS = "salonx_metrics_v4";
 const QUEUE_EVENT_NAME = "salonx_queue_updated";
 
 export function getStoredData<T>(key: string, defaultValue: T): T {
@@ -35,7 +36,15 @@ export function setStoredData<T>(key: string, value: T): void {
   }
 }
 
-// Hook to access and manipulate global SalonX state
+export interface BackendStatusState {
+  online: boolean;
+  driver: "supabase" | "in-memory-api" | "local_fallback";
+  isConfigured: boolean;
+  isSyncing: boolean;
+  lastSyncAt: string | null;
+}
+
+// Hook to access and manipulate global SalonX state with live backend synchronization
 export function useSalonStore() {
   const [salons, setSalons] = useState<Salon[]>(() =>
     getStoredData(STORAGE_KEY_SALONS, MOCK_SALONS)
@@ -49,6 +58,90 @@ export function useSalonStore() {
   const [metrics, setMetrics] = useState<PlatformMetric>(() =>
     getStoredData(STORAGE_KEY_METRICS, MOCK_PLATFORM_METRICS)
   );
+  const [backendStatus, setBackendStatus] = useState<BackendStatusState>({
+    online: false,
+    driver: "in-memory-api",
+    isConfigured: false,
+    isSyncing: true,
+    lastSyncAt: null,
+  });
+
+  const isMountedRef = useRef(true);
+
+  const broadcastChange = useCallback(() => {
+    if (typeof window !== "undefined") {
+      window.dispatchEvent(new Event(QUEUE_EVENT_NAME));
+    }
+  }, []);
+
+  // Fetch live backend data
+  const refreshData = useCallback(async () => {
+    try {
+      setBackendStatus((prev) => ({ ...prev, isSyncing: true }));
+
+      // Fetch health & backend status
+      const healthRes = await apiClient.health.check().catch(() => null);
+
+      // Fetch live salons, bookings and metrics in parallel
+      const [salonsRes, bookingsRes, metricsRes] = await Promise.all([
+        apiClient.salons.list().catch(() => null),
+        apiClient.bookings.list().catch(() => null),
+        apiClient.metrics.get().catch(() => null),
+      ]);
+
+      if (!isMountedRef.current) return;
+
+      if (salonsRes && salonsRes.success && salonsRes.salons.length > 0) {
+        setSalons(salonsRes.salons);
+        setStoredData(STORAGE_KEY_SALONS, salonsRes.salons);
+      }
+
+      if (bookingsRes && bookingsRes.success) {
+        setBookings(bookingsRes.bookings);
+        setStoredData(STORAGE_KEY_BOOKINGS, bookingsRes.bookings);
+      }
+
+      if (metricsRes && metricsRes.success) {
+        setMetrics(metricsRes.metrics);
+        setStoredData(STORAGE_KEY_METRICS, metricsRes.metrics);
+      }
+
+      setBackendStatus({
+        online: Boolean(healthRes && healthRes.success),
+        driver: (healthRes?.driver as any) || "in-memory-api",
+        isConfigured: Boolean(healthRes?.isConfigured),
+        isSyncing: false,
+        lastSyncAt: new Date().toLocaleTimeString(),
+      });
+    } catch (err) {
+      console.warn("Backend sync notice (running on resilient client cache):", err);
+      if (isMountedRef.current) {
+        setBackendStatus((prev) => ({
+          ...prev,
+          online: false,
+          isSyncing: false,
+        }));
+      }
+    }
+  }, []);
+
+  // Sync with backend on mount and set up periodic live sync
+  useEffect(() => {
+    isMountedRef.current = true;
+    refreshData();
+
+    // Periodic live sync every 8 seconds for real-time queue
+    const interval = setInterval(() => {
+      if (typeof document !== "undefined" && document.visibilityState === "visible") {
+        refreshData();
+      }
+    }, 8000);
+
+    return () => {
+      isMountedRef.current = false;
+      clearInterval(interval);
+    };
+  }, [refreshData]);
 
   // Sync with cross-tab / window storage events
   useEffect(() => {
@@ -80,12 +173,6 @@ export function useSalonStore() {
     };
   }, []);
 
-  const broadcastChange = () => {
-    if (typeof window !== "undefined") {
-      window.dispatchEvent(new Event(QUEUE_EVENT_NAME));
-    }
-  };
-
   // Switch role / user
   const switchUser = (userId: string) => {
     const target = MOCK_USERS.find((u) => u.id === userId) || MOCK_USERS[0];
@@ -93,7 +180,7 @@ export function useSalonStore() {
     setStoredData(STORAGE_KEY_USER, target);
   };
 
-  // Atomic queue token generation
+  // Atomic queue token generation helper
   const getNextTokenNumber = (salonId: string, bookingDate: string): number => {
     const existing = bookings.filter(
       (b) => b.salonId === salonId && b.bookingDate === bookingDate
@@ -103,7 +190,7 @@ export function useSalonStore() {
     return maxToken + 1;
   };
 
-  // Create booking
+  // Create booking (Optimistic + Backend API)
   const createBooking = (
     newBooking: Omit<
       Booking,
@@ -135,7 +222,7 @@ export function useSalonStore() {
 
     const booking: Booking = {
       ...newBooking,
-      id: `bk_${Date.now()}_${Math.random().toString(36).substr(2, 5)}`,
+      id: `bk_${Date.now()}_${Math.random().toString(36).substring(2, 6)}`,
       bookingCode,
       queueTokenNumber: tokenNum,
       status: "confirmed",
@@ -148,7 +235,7 @@ export function useSalonStore() {
     setBookings(updatedBookings);
     setStoredData(STORAGE_KEY_BOOKINGS, updatedBookings);
 
-    // Update salon queue stats
+    // Update salon queue stats locally
     if (salon && isToday) {
       const activeQueue = updatedBookings.filter(
         (b) =>
@@ -168,6 +255,22 @@ export function useSalonStore() {
     }
 
     broadcastChange();
+
+    // Async call to backend API
+    apiClient.bookings
+      .create(newBooking)
+      .then((res) => {
+        if (res.success && res.booking) {
+          // Replace optimistic booking with server booking
+          setBookings((prev) =>
+            prev.map((b) => (b.id === booking.id ? res.booking : b))
+          );
+        }
+      })
+      .catch((err) => {
+        console.warn("Backend booking API sync error:", err);
+      });
+
     return booking;
   };
 
@@ -198,12 +301,10 @@ export function useSalonStore() {
     if (targetBooking) {
       const salon = salons.find((s) => s.id === targetBooking.salonId);
       if (salon) {
-        // Find next lowest confirmed token or current serving
         let newServing = salon.currentServingToken;
         if (status === "in_service") {
           newServing = targetBooking.queueTokenNumber;
         } else if (status === "completed" || status === "cancelled") {
-          // Find next pending
           const pending = updatedBookings
             .filter(
               (b) =>
@@ -237,6 +338,11 @@ export function useSalonStore() {
     }
 
     broadcastChange();
+
+    // Async update on backend API
+    apiClient.bookings.updateStatus(bookingId, status, reason).catch((err) => {
+      console.warn("Backend booking status update error:", err);
+    });
   };
 
   // Salon Owner updates salon details
@@ -245,6 +351,11 @@ export function useSalonStore() {
     setSalons(updated);
     setStoredData(STORAGE_KEY_SALONS, updated);
     broadcastChange();
+
+    // Async backend update
+    apiClient.salons.update(salonId, patch).catch((err) => {
+      console.warn("Backend salon update error:", err);
+    });
   };
 
   // Super Admin approves or rejects salon
@@ -266,6 +377,75 @@ export function useSalonStore() {
     setMetrics(newMetrics);
     setStoredData(STORAGE_KEY_METRICS, newMetrics);
     broadcastChange();
+
+    // Async backend update
+    apiClient.salons.update(salonId, { status, isVerified: status === "active" }).catch((err) => {
+      console.warn("Backend salon approval update error:", err);
+    });
+  };
+
+  // Register a new salon (for Become Partner)
+  const registerSalon = async (salonData: Partial<Salon>): Promise<Salon> => {
+    const id = `salon_${Date.now()}_${Math.random().toString(36).substring(2, 6)}`;
+    const newSalon: Salon = {
+      id,
+      slug: salonData.name ? salonData.name.toLowerCase().replace(/[^a-z0-9]+/g, "-") : id,
+      name: salonData.name || "New Atelier",
+      tagline: salonData.tagline || "Elite Grooming",
+      description: salonData.description || "Partner salon delivering signature grooming.",
+      address: salonData.address || "Main Boulevard",
+      city: salonData.city || "Mumbai",
+      area: salonData.area || "City Center",
+      pincode: salonData.pincode || "400001",
+      latitude: 19.076,
+      longitude: 72.8777,
+      phone: salonData.phone || "+91 99999 00000",
+      email: salonData.email || "concierge@salon.com",
+      rating: 5.0,
+      reviewCount: 0,
+      bannerImage:
+        salonData.bannerImage ||
+        "https://images.unsplash.com/photo-1585747860715-2ba37e788b70?q=80&w=1200&auto=format&fit=crop",
+      galleryImages: [],
+      startingPrice: salonData.startingPrice || 500,
+      openingHours: [],
+      services: [],
+      staff: [],
+      amenities: ["Wi-Fi", "Air Conditioning"],
+      isVerified: false,
+      status: "pending",
+      ownerId: currentUser.id,
+      currentServingToken: 0,
+      activeQueueCount: 0,
+      estimatedWaitPerCustomerMinutes: 20,
+    };
+
+    const updatedSalons = [newSalon, ...salons];
+    setSalons(updatedSalons);
+    setStoredData(STORAGE_KEY_SALONS, updatedSalons);
+
+    const updatedMetrics = {
+      ...metrics,
+      totalSalons: metrics.totalSalons + 1,
+      pendingApprovals: metrics.pendingApprovals + 1,
+    };
+    setMetrics(updatedMetrics);
+    setStoredData(STORAGE_KEY_METRICS, updatedMetrics);
+
+    broadcastChange();
+
+    // Call backend API
+    try {
+      const res = await apiClient.salons.create(newSalon);
+      if (res.success && res.salon) {
+        setSalons((prev) => prev.map((s) => (s.id === newSalon.id ? res.salon : s)));
+        return res.salon;
+      }
+    } catch (e) {
+      console.warn("Backend salon registration notice:", e);
+    }
+
+    return newSalon;
   };
 
   // Reset to demo data
@@ -279,6 +459,7 @@ export function useSalonStore() {
     setStoredData(STORAGE_KEY_USER, MOCK_USERS[0]);
     setStoredData(STORAGE_KEY_METRICS, MOCK_PLATFORM_METRICS);
     broadcastChange();
+    refreshData();
   };
 
   return {
@@ -286,12 +467,15 @@ export function useSalonStore() {
     bookings,
     currentUser,
     metrics,
+    backendStatus,
     switchUser,
     createBooking,
     updateBookingStatus,
     updateSalon,
     setSalonApproval,
+    registerSalon,
     resetDemoData,
+    refreshData,
     getNextTokenNumber,
   };
 }

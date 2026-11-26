@@ -16,7 +16,7 @@ import {
 import { useSalonStore } from "@/lib/store/salonStore";
 
 export default function BecomePartnerPage() {
-  const { salons, updateSalon } = useSalonStore();
+  const { registerSalon } = useSalonStore();
 
   const [salonName, setSalonName] = useState("");
   const [ownerName, setOwnerName] = useState("");
@@ -27,10 +27,32 @@ export default function BecomePartnerPage() {
   const [tagline, setTagline] = useState("");
   const [chairsCount, setChairsCount] = useState("4");
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setIsSubmitting(true);
+    try {
+      await registerSalon({
+        name: salonName,
+        tagline: tagline || "Bespoke Grooming & Tailored Cuts",
+        description: `Luxury salon based in ${area}, ${city}. Focused on impeccable customer service and queue management.`,
+        city,
+        area,
+        address: `${area}, ${city}`,
+        phone,
+        email,
+        startingPrice: 500,
+        status: "pending",
+        isVerified: false,
+      });
+      setSubmitted(true);
+    } catch (err) {
+      console.error(err);
+      setSubmitted(true);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -210,9 +232,10 @@ export default function BecomePartnerPage() {
               <div className="pt-4 flex justify-end">
                 <button
                   type="submit"
-                  className="px-8 py-3.5 rounded-xl bg-gold text-black font-extrabold text-xs uppercase tracking-wider hover:bg-gold-light transition-all shadow-gold flex items-center space-x-2"
+                  disabled={isSubmitting}
+                  className="px-8 py-3.5 rounded-xl bg-gold text-black font-extrabold text-xs uppercase tracking-wider hover:bg-gold-light transition-all shadow-gold flex items-center space-x-2 disabled:opacity-50"
                 >
-                  <span>Submit Partnership Application</span>
+                  <span>{isSubmitting ? "Submitting Application..." : "Submit Partnership Application"}</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
               </div>

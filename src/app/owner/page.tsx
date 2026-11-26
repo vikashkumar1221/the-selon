@@ -27,8 +27,15 @@ import { useSalonStore } from "@/lib/store/salonStore";
 import { Booking, BookingStatus, ServiceItem, SalonStaff } from "@/types";
 
 export default function SalonOwnerDashboard() {
-  const { salons, bookings, currentUser, updateBookingStatus, updateSalon, createBooking } =
-    useSalonStore();
+  const {
+    salons,
+    bookings,
+    currentUser,
+    updateBookingStatus,
+    updateSalon,
+    createBooking,
+    backendStatus,
+  } = useSalonStore();
 
   // Find owner's salon (default to The Royal Crown Barber)
   const salon =
@@ -155,7 +162,10 @@ export default function SalonOwnerDashboard() {
                   Owner Dashboard
                 </span>
                 <span className="text-[#71717A]">•</span>
-                <span className="text-xs text-green-400 font-semibold">Live Mode</span>
+                <span className="inline-flex items-center space-x-1.5 text-xs text-emerald-400 font-semibold">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                  <span>{backendStatus.isConfigured ? "Supabase Live" : "Backend Connected"}</span>
+                </span>
               </div>
               <h1 className="text-2xl font-extrabold text-white">{salon.name}</h1>
               <p className="text-xs text-[#A1A1AA]">{salon.address}, {salon.city}</p>
